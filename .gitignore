@@ -1,0 +1,7 @@
+*.o
+*.a
+*.updated
+cube3d
+.objs
+.idea
+.vscode

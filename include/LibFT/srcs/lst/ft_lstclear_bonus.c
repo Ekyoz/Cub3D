@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atresall <atresall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2023/11/15 17:25:27 by alexandre         #+#    #+#             */
+/*   Updated: 2023/11/17 15:21:32 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
+#include "libft.h"
 
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp_next;
+
+	if (!*lst || !del)
+		return ;
+	while (*lst)
+	{
+		temp_next = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = temp_next;
+	}
+	*lst = NULL;
 }

@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_arrlen.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atresall <atresall@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2024/05/07 13:19:39 by atresall          #+#    #+#             */
+/*   Updated: 2024/05/07 14:23:18 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
+#include "libft.h"
 
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+size_t	ft_arrlen(char **array)
+{
+	size_t	size;
+
+	size = 0;
+	if (!array)
+		return (0);
+	while (array[size])
+	{
+		size++;
+	}
+	return (size);
 }

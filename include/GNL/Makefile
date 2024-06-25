@@ -3,44 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atresall <bpoyet@student.42.fr>            +#+  +:+       +#+         #
+#    By: atresall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/06/06 19:25:32 by atresall         ###   ########.fr        #
+#    Updated: 2024/03/03 14:07:07 by atresall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #-------- NAME --------#
-PROJECT_NAME		= "Cube 3D"
-NAME				= "cube3d"
+PROJECT_NAME		= "Get Next Line"
+NAME				= "gnl"
 
 #-------- FILES --------#
 
-HEADER_FILES			= cube3d
-SRC_FILES		    	= main
+HEADER_FILES			=
+SRC_FILES		    	= get_next_line get_next_line_utils
 TEST_FILES  			=
 
-FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser
-
-FILE_RAYCASTING_DIR		= raycasting/
-FILE_RAYCASTING			= raycasting
-
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR)
-
-SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
-SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
-
-#-------- LIBS --------#
-
-LIBFT_DIR			= $(INCLUDE_DIR)/LibFT
-LIBFT_ARCHIVE		= $(LIBFT_DIR)/libft.a
-
-GNL_DIR				= $(INCLUDE_DIR)/GNL
-GNL_ARCHIVE			= $(GNL_DIR)/libgnl.a
-
-LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR)
-LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE)
+LIB_LIST				=
+LIB_LIST_ARCHIVE		= $(ARCHIVE_NAME)
 
 #-------- FLAGS --------#
 CFLAGS 				= -Wall -Wextra -Werror -g3
@@ -57,7 +38,7 @@ VFALGS				= -s --leak-check=full --track-origins=yes --suppressions=supp.supp --
 #------------------------------------------------------------------------------#
 
 #-------- NAMES --------#
-ARCHIVE_NAME		= $(OUT)/lib$(NAME).a
+ARCHIVE_NAME		= lib$(NAME).a
 RUN_NAME			= $(NAME)
 DEBUG_NAME 			= $(OUT)/debug.out
 TEST_NAME			= $(OUT)/test.out
@@ -136,7 +117,6 @@ $(TEST_OUT_DIR)/%.o: $(TEST_DIR)/%.c $(HEADERS) Makefile | $(OBJF)
 $(NAME): archive $(OBJ) $(HEADERS)
 			@files=$$(find $(OUT) -name '*.updated'); \
 			if [ -n "$$files" ]; then \
-				$(CC) $(CFLAGS) $(OBJ) $(INCLUDE_RUN) -o $(RUN_NAME) $(LIBFLAGS); \
 				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès!$(DEF_COLOR) ($(YELLOW)$(BOLD)$(COUNTER)$(DEF_COLOR) $(WHITE)fichiers$(DEF_COLOR))"; \
 				rm -f $$files; \
 			else \
@@ -158,7 +138,11 @@ archive:	lib $(OBJ) $(HEADERS)
 			@rm -rf __.*
 
 run: $(NAME)
-			./$(RUN_NAME)
+			@if [ -z "$(ARG)" ]; then \
+					./$(RUN_NAME); \
+				else \
+					./$(RUN_NAME) $(ARG); \
+				fi
 
 valgrind: $(NAME)
 			valgrind $(VFALGS) ./$(RUN_NAME)

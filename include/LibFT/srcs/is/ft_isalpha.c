@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atresall <atresall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2023/11/07 10:55:59 by atresall          #+#    #+#             */
+/*   Updated: 2023/11/17 15:01:27 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
-
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+int	ft_isalpha(int c)
+{
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	{
+		return (1024);
+	}
+	return (0);
 }

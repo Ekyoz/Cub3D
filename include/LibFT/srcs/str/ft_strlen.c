@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2023/11/07 12:16:22 by atresall          #+#    #+#             */
+/*   Updated: 2024/02/12 14:35:17 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
+#include "libft.h"
 
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }

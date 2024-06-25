@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atresall <atresall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2023/11/15 12:37:21 by alexandre         #+#    #+#             */
+/*   Updated: 2023/11/27 11:00:57 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
+#include "libft.h"
 
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+int	ft_putstr_fd(char *s, int fd)
+{
+	if (!s)
+		s = "(null)";
+	return (write(fd, s, ft_strlen(s)));
 }

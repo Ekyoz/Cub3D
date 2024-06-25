@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2023/11/08 17:57:55 by atresall          #+#    #+#             */
+/*   Updated: 2023/11/16 17:29:13 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cube3d.h"
+#include "libft.h"
 
-int main() {
-    printf("Hello, world!\n");
-    return 0;
+char	*ft_strrchr(const char *str, int ch)
+{
+	char	*s;
+
+	s = (char *)str;
+	while (*s != '\0')
+		s++;
+	while (*s != (char)ch && str != s)
+		s--;
+	if (*s == (char)ch)
+		return (s);
+	else
+		return (0);
 }
