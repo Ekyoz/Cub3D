@@ -1,0 +1,32 @@
+---------------README PARSING---------------
+
+
+-------TEXTURE ET COULEUR   -------
+
+- gerer les espaces, tab, retour a la ligne
+- commencer par NO, SO, WE, EA
+- espace obligatoire apres chaque code
+- texture affiche dans l'ordre
+- premier NO
+- derniere couleur
+- differencier map de texture
+
+FAISABILITE:
+
+- checker ma texture actuelle et si elle succede bien celle d'avant
+- avoir la last couleur et un 1
+
+
+-------MAP-------
+
+- Des 0, 1, N, S, E, W
+
+- ok
+11
+101
+111
+
+11
+10111
+10111
+11

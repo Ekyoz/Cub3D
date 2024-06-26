@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.c:+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre          #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre         ###   ########.fr       */
+/*   Created: 2024/06/26 13:29:48 by bpoyet            #+#    #+#             */
+/*   Updated: 2024/06/26 14:25:14 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "cube3d.h"
 
-int main(int argc, char **argv) {
-    
-    t_pcub *cub;
+int open_file(char *argv1, t_pcub *cub)
+{
+    int fd;
 
-    cub = init_cub();
-    parse_map(cub, argc, argv);
-    return 0;
+    fd = open(argv1, O_RDONLY);
+    if(fd == -1)
+    {
+        print_free_exit(ERROR_OPEN_FILE, cub);
+    }
+    return fd;
 }

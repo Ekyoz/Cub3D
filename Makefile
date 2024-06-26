@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atresall <bpoyet@student.42.fr>            +#+  +:+       +#+         #
+#    By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/06/06 19:25:32 by atresall         ###   ########.fr        #
+#    Updated: 2024/06/26 15:32:16 by bpoyet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,18 @@ HEADER_FILES			= cube3d
 SRC_FILES		    	= main
 TEST_FILES  			=
 
+FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
+FILE_GARBAGE_COLLECTOR 		    = free_functions
+
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser
+FILE_PARSER 		    = parser file texture
 
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= raycasting
 
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR)
+DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_GARBAGE_COLLECTOR_DIR)
 
+SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COLLECTOR_DIR), $(FILE_GARBAGE_COLLECTOR))
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
 
