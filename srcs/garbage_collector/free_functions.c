@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 15:32:45 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/26 17:14:00 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,20 @@ static void	free_array(char ***ptr)
 
 void free_cub(t_pcub **cub)
 {
-    free_array(&(*cub)->texture);
-    free_array(&(*cub)->map);
-    close((*cub)->filefd);
-    (*cub)->filefd = -1;
+	if(*cub)
+	{
+		if((*cub)->texture)
+			free_array(&(*cub)->texture);
+		if((*cub)->map)
+			free_array(&(*cub)->map);
+		if((*cub)->filefd != -1)
+		{
+			close((*cub)->filefd);
+    		(*cub)->filefd = -1;
+		}
+		free(*cub);
+		*cub = NULL;
+	}
 }
 
 void print_free_exit(char *str, t_pcub *cub)

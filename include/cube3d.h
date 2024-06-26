@@ -14,13 +14,14 @@
 #define CUBE3D_H
 
 #include <fcntl.h>
+#include <stdio.h>
+#include <stdbool.h>
 #include "parser.h"
 #include "ray.h"
 #include "structs.h"
 #include "libft.h"
 #include "errormessage.h"
 #include "get_next_line.h"
-#include <stdio.h>
 
 typedef struct s_pcub
 {
@@ -28,6 +29,8 @@ typedef struct s_pcub
     char **map;
     int filefd;
     int heighttext;
+    int countorder;
+    int linetexture;
 } t_pcub;
 
 typedef struct s_color
@@ -41,12 +44,16 @@ typedef struct s_color
 } t_color;
 
 //PARSING
-t_pcub  *init_cub();
-int open_file(char *argv1, t_pcub *cub);
-void    parse_map(t_pcub *cub, int argc, char **argv);
+t_pcub      *init_cub();
+int         open_file(char *argv1, t_pcub *cub);
+void        parse_map(t_pcub *cub, int argc, char **argv);
 
 //TEXTURE
-void get_texture(t_pcub *cub, char *argv1);
+void        get_texture(t_pcub *cub, char *argv1);
+
+//UTILS
+bool         is_map(char *str);
+
 
 //FREE
 void    free_cub(t_pcub **cub);

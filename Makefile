@@ -6,7 +6,7 @@
 #    By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/06/26 15:32:16 by bpoyet           ###   ########.fr        #
+#    Updated: 2024/06/26 18:31:33 by bpoyet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
 FILE_GARBAGE_COLLECTOR 		    = free_functions
 
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser file texture
+FILE_PARSER 		    = parser file texture utils
 
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= raycasting

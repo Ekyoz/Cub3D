@@ -6,13 +6,13 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 15:09:12 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:52:14 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void check_texture_ext(char *argv1, t_pcub *cub)
+void check_texture_extension(char *argv1, t_pcub *cub)
 {
     char *str;
     // je check si l'extension est bien .cub
@@ -24,26 +24,81 @@ void check_texture_ext(char *argv1, t_pcub *cub)
     }
 }
 
-static void read_texture(t_pcub *cub)
+static char **init_texture(t_pcub *cub)
+{
+    char **texture;
+    int i;
+
+    i = 0;
+    texture = (char **)malloc(sizeof(char *) * 5);
+    if(!texture)
+        print_free_exit(ERROR_MALLOC_INIT, cub);
+    while(i < 5)
+    {
+        texture[i] = NULL;
+        i++;
+    }
+    return texture;
+}
+
+static void texture_in_line(char *str)
+{
+    int i;
+
+    i = 0;
+    while(str[i])
+    {
+        while(str[i] && ft_isspace(str[i]))
+            i++;
+        i++;
+    }
+}
+
+static void put_texture(t_pcub *cub)
+{
+    int i;
+
+    i = 0;
+    while(i < cub->linetexture)
+    {
+        
+        i++;
+    }
+
+}
+
+static void countline_texture(t_pcub *cub)
 {
     char *str;
 
     str = get_next_line(cub->filefd);
     if(str == NULL)
         print_free_exit(EMPTY_FILE, cub);
-    while(str != NULL)
+    cub->texture = init_texture(cub);
+    while(str != NULL && !is_map(str))
     {
-        printf("%s\n", str);
+        cub->linetexture++;
+        free(str);
+        str = get_next_line(cub->filefd);
+    }
+    while(str)
+    {
         free(str);
         str = get_next_line(cub->filefd);
     }
     free(str);
+    printf("linetexture = %d\n", cub->linetexture);
 }
 
 void get_texture(t_pcub *cub, char *argv1)
 {
     //check si bonne extension
-    check_texture_ext(argv1, cub);
+    check_texture_extension(argv1, cub);
+    //ouverture fichier
     cub->filefd = open_file(argv1, cub);
     read_texture(cub);
+    countline_texture(cub);
+    close(cub->filefd);
+    cub->filefd = open_file(argv1, cub);
+    put_texture(cub);
 }

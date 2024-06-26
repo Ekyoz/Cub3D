@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 13:29:48 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 19:32:29 by bpoyet           ###   ########.fr       */
+/*   Created: 2024/06/26 18:30:10 by bpoyet            #+#    #+#             */
+/*   Updated: 2024/06/26 19:25:16 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int open_file(char *argv1, t_pcub *cub)
+bool is_map(char *str)
 {
-    int fd;
+    int i;
 
-    fd = open(argv1, O_RDONLY);
-    if(fd == -1)
+    i = 0;
+    while(str[i])
     {
-        print_free_exit(ERROR_OPEN_FILE, cub);
+        while(str[i] && ft_isspace(str[i]))
+            i++;
+        if((str[i] == '1' || str[i] == '0'))
+        {
+            if(i == 0  || ft_isspace(str[i - 1]))
+                return true;
+        }
+        if(str[i] == '\0')
+            return false;
+        i++;
     }
-    return fd;
+    return false;
 }

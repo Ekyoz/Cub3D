@@ -19,5 +19,6 @@ int main(int argc, char **argv) {
 
     cub = init_cub();
     parse_map(cub, argc, argv);
+    free_cub(&cub);
     return 0;
 }

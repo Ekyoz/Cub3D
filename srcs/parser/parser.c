@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:21:21 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 14:37:31 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:48:26 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_pcub *init_cub()
         free_cub(&cub);
         exit(1);
     }
+    cub->countorder = 0;
+    cub->linetexture = 0;
     cub->texture = NULL;
     cub->map = NULL;
     cub->filefd = -1;
@@ -34,8 +36,7 @@ void parse_map(t_pcub *cub, int argc, char **argv)
 {
     if(argc != 2)
     {
-        printf(ERROR_ARG);
-        exit(1);
+        print_free_exit(ERROR_ARG, cub);
     }
     cub->filefd = open_file(argv[1], cub);
     get_texture(cub, argv[1]);

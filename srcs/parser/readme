@@ -6,15 +6,15 @@
 - gerer les espaces, tab, retour a la ligne
 - commencer par NO, SO, WE, EA
 - espace obligatoire apres chaque code
-- texture affiche dans l'ordre
-- premier NO
+    - Si espace et retour a la ligne ou autre, erreur
+    - Check du path de la texture
+    - retour a la ligne a la fin
 - derniere couleur
-- differencier map de texture
 
 FAISABILITE:
 
-- checker ma texture actuelle et si elle succede bien celle d'avant
-- avoir la last couleur et un 1
+- 
+- avoir la last couleur et un 1 pour pouvoir passer a la map
 
 
 -------MAP-------
