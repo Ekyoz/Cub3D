@@ -39,8 +39,11 @@ LIBFT_ARCHIVE		= $(LIBFT_DIR)/libft.a
 GNL_DIR				= $(INCLUDE_DIR)/GNL
 GNL_ARCHIVE			= $(GNL_DIR)/libgnl.a
 
-LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR)
-LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE)
+MLX_DIR				= $(INCLUDE_DIR)/mlx
+MLX_ARCHIVE			= $(MLX_DIR)/libmlx.a
+
+LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR) $(MLX_DIR)
+LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE) $(MLX_ARCHIVE)
 
 #-------- FLAGS --------#
 CFLAGS 				= -Wall -Wextra -Werror -g3
@@ -48,8 +51,8 @@ CFLAGS_DEBUG		= -Wall -Wextra -g3
 CFLAGS_EXEC			= -Wall -Wextra -Werror -g3
 CFLAGS_PARSING		= -Wall -Wextra -Werror -g3
 CFLAGS_TEST			= -g3
-INCLUDES			=
-LIBFLAGS			=
+INCLUDES			= -I$(MLX_DIR) -O3
+LIBFLAGS			=  -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
 VFALGS				= -s --leak-check=full --track-origins=yes --suppressions=supp.supp --show-leak-kinds=all
 
 #------------------------------------------------------------------------------#

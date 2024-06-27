@@ -1,4 +1,0 @@
-#ifndef CUBE3D_PARSER_HPP
-#define CUBE3D_PARSER_HPP
-
-#endif //CUBE3D_PARSER_HPP

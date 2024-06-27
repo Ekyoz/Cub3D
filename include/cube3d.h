@@ -13,8 +13,7 @@
 #ifndef CUBE3D_H
 #define CUBE3D_H
 
-#include "parser.h"
-#include "ray.h"
 #include "structs.h"
+#include "mlx.h"
 
 #endif
