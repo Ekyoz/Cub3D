@@ -5,3 +5,5 @@ cube3d
 .objs
 .idea
 .vscode
+*.gen
+mlx-test

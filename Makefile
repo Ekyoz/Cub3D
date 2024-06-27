@@ -209,6 +209,7 @@ clean:
 
 fclean:		clean
 			@echo "$(RED)Tous les fichier executable de $(CYAN)$(BOLD)$(PROJECT_NAME)$(RED) ont été supprimé!$(DEF_COLOR)\n"
+			@make clean --no-print-directory -C $(MLX_DIR)
 			@for dir in $(LIB_LIST); do make fclean --no-print-directory -C $$dir; done
 			@$(RM) $(ARCHIVE_NAME)
 
