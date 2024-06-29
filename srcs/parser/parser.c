@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:21:21 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 19:48:26 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/27 14:00:05 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ t_pcub *init_cub()
     }
     cub->countorder = 0;
     cub->linetexture = 0;
+    cub->northtext = false;
+    cub->southtext = false;
+    cub->easttext = false;
+    cub->westtext = false;
+    cub->fcolor = false;
+    cub->ccolor = false;
     cub->texture = NULL;
     cub->map = NULL;
     cub->filefd = -1;

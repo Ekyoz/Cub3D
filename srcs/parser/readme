@@ -13,8 +13,11 @@
 
 FAISABILITE:
 
-- 
-- avoir la last couleur et un 1 pour pouvoir passer a la map
+- decouper en texture et couleur
+- Pour recuperer les textures
+    - j'itere dans mon decoupage en verifiant si je trouve NO, SO, WE, EA, F, C
+    - je trouve 6 textures dans l'ordre 
+avoir la last couleur et un 1 pour pouvoir passer a la map
 
 
 -------MAP-------

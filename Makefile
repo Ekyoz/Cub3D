@@ -6,7 +6,7 @@
 #    By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/06/26 18:31:33 by bpoyet           ###   ########.fr        #
+#    Updated: 2024/06/27 14:21:16 by bpoyet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,20 @@ FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
 FILE_GARBAGE_COLLECTOR 		    = free_functions
 
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser file texture utils
+FILE_PARSER 		    = parser file
+
+FILE_TEXTURE_DIR		= parser/texture/
+FILE_TEXTURE			= texture texture_utils
 
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= raycasting
 
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_GARBAGE_COLLECTOR_DIR)
+DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_GARBAGE_COLLECTOR_DIR) $(FILE_TEXTURE_DIR)
 
 SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COLLECTOR_DIR), $(FILE_GARBAGE_COLLECTOR))
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
+SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
 
 #-------- LIBS --------#
 

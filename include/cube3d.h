@@ -31,6 +31,12 @@ typedef struct s_pcub
     int heighttext;
     int countorder;
     int linetexture;
+    bool northtext;
+    bool southtext;
+    bool easttext;
+    bool westtext;
+    bool fcolor;
+    bool ccolor;
 } t_pcub;
 
 typedef struct s_color
@@ -43,6 +49,8 @@ typedef struct s_color
     unsigned int b_floor;
 } t_color;
 
+
+
 //PARSING
 t_pcub      *init_cub();
 int         open_file(char *argv1, t_pcub *cub);
@@ -50,6 +58,10 @@ void        parse_map(t_pcub *cub, int argc, char **argv);
 
 //TEXTURE
 void        get_texture(t_pcub *cub, char *argv1);
+void check_texture_extension(char *argv1, t_pcub *cub);
+char **init_texture(t_pcub *cub);
+void texture_in_line(char *str);
+int	check_cmp(char *line);
 
 //UTILS
 bool         is_map(char *str);
