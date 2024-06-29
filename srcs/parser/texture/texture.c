@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/29 10:13:05 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/29 15:47:17 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ static void find_texture(char *str, int x, t_pcub *cub)
         printf("northtext = %d et countorder = %d\n", cub->northtext, cub->countorder);
         if(cub->northtext == false && cub->countorder == 0)
         {
+            if()
             cub->northtext = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
     else if(str[x] == 'S' && str[x + 1] == 'O')
     {
@@ -32,6 +35,8 @@ static void find_texture(char *str, int x, t_pcub *cub)
             cub->southtext = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
     else if(str[x] == 'W' && str[x + 1] == 'E')
     {
@@ -40,6 +45,8 @@ static void find_texture(char *str, int x, t_pcub *cub)
             cub->westtext = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
     else if(str[x] == 'E' && str[x + 1] == 'A')
     {
@@ -48,6 +55,8 @@ static void find_texture(char *str, int x, t_pcub *cub)
             cub->easttext = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
     else if(str[x] == 'F')
     {
@@ -56,6 +65,8 @@ static void find_texture(char *str, int x, t_pcub *cub)
             cub->fcolor = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
     else if(str[x] == 'C')
     {
@@ -64,6 +75,8 @@ static void find_texture(char *str, int x, t_pcub *cub)
             cub->ccolor = true;
             cub->countorder++;
         }
+        else 
+            print_free_exit(WRONG_ORDER, cub);
     }
 }
 

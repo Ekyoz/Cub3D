@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:30:10 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 19:25:16 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/06/29 15:49:36 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,18 @@ bool is_map(char *str)
         i++;
     }
     return false;
+}
+
+bool space_before(char *str, int index)
+{
+    int i;
+
+    i = 0;
+    while(i < index)
+    {
+        if(str[i] != ' ' || str[i] != '\t')
+            return false;
+        i++;
+    }
+    return true;
 }

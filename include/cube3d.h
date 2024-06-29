@@ -65,7 +65,7 @@ int	check_cmp(char *line);
 
 //UTILS
 bool         is_map(char *str);
-
+bool space_before(char *str, int index);
 
 //FREE
 void    free_cub(t_pcub **cub);
