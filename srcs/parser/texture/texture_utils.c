@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:08:17 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/27 14:18:03 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/02 11:04:03 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_cmp(char *line)
 	return (0);
 }
 
-void check_texture_extension(char *argv1, t_pcub *cub)
+void check_arg_extension(char *argv1, t_pcub *cub)
 {
     char *str;
     str = ft_strnstr(argv1, ".cub", ft_strlen(argv1));
@@ -60,4 +60,15 @@ void texture_in_line(char *str)
             i++;
         i++;
     }
+}
+
+void check_texture_extension(t_pcub *cub, char *texture)
+{
+    int length;
+
+    length = ft_strlen(texture);
+    if(length < 4)
+        print_free_exit(TEXTURE_PROBLEM, cub);
+    if(ft_strncmp(&texture[length - 4], ".xpm", 4) != 0)
+        print_free_exit(WRONG_EXTENSION, cub);
 }

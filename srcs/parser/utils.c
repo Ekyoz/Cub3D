@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:30:10 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/29 15:49:36 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/02 13:02:55 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,24 @@ bool space_before(char *str, int index)
         if(str[i] != ' ' || str[i] != '\t')
             return false;
         i++;
+    }
+    return true;
+}
+
+bool space_inside(char *start, char *end)
+{
+    int i;
+    int j;
+    
+    j = 0;
+    i = end - start;
+    while(j < i)
+    {
+        if(start[j] != ' ' && start[j] != '\t')
+        {
+            return false;
+        }
+        j++;
     }
     return true;
 }

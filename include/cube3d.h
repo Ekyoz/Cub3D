@@ -23,22 +23,6 @@
 #include "errormessage.h"
 #include "get_next_line.h"
 
-typedef struct s_pcub
-{
-    char **texture;
-    char **map;
-    int filefd;
-    int heighttext;
-    int countorder;
-    int linetexture;
-    bool northtext;
-    bool southtext;
-    bool easttext;
-    bool westtext;
-    bool fcolor;
-    bool ccolor;
-} t_pcub;
-
 typedef struct s_color
 {
     unsigned int r_ceiling;
@@ -47,9 +31,29 @@ typedef struct s_color
     unsigned int r_floor;
     unsigned int g_floor;
     unsigned int b_floor;
+    int floor;
+    int ceiling;
 } t_color;
 
-
+typedef struct s_pcub
+{
+    t_color *color;
+    char *notexture;
+    char *sotexture;
+    char *wetexture;
+    char *eatexture;
+    char **map;
+    int filefd;
+    int countorder;
+    int linetexture;
+    int linemap;
+    bool northtext;
+    bool southtext;
+    bool easttext;
+    bool westtext;
+    bool fcolor;
+    bool ccolor;
+} t_pcub;
 
 //PARSING
 t_pcub      *init_cub();
@@ -58,17 +62,36 @@ void        parse_map(t_pcub *cub, int argc, char **argv);
 
 //TEXTURE
 void        get_texture(t_pcub *cub, char *argv1);
-void check_texture_extension(char *argv1, t_pcub *cub);
-char **init_texture(t_pcub *cub);
-void texture_in_line(char *str);
-int	check_cmp(char *line);
+void        check_arg_extension(char *argv1, t_pcub *cub);
+void        check_texture_extension(t_pcub *cub, char *texture);
+char        **init_texture(t_pcub *cub);
+void        texture_in_line(char *str);
+int	        check_cmp(char *line);
+
+//FACE TEXTURE
+void get_texture_face(t_pcub *cub, char *str, int j, char **face);
+
+//COLORS
+void        get_color_ceiling(t_pcub *cub, char *str, t_color **color);
+void        get_color_floor(t_pcub *cub, char *str, t_color **color);
+void        is_valid_color(char *str, t_pcub *cub);
+int         check_space_inside(t_pcub *cub, char *str);
+void        color_hex_floor(t_pcub *cub);
+void        color_hex_ceiling(t_pcub *cub);
+int        ft_tablen(char **tab);
+
+//MAPS
+void        get_height_map(t_pcub *cub);
+void        fill_map(t_pcub *cub);
 
 //UTILS
-bool         is_map(char *str);
-bool space_before(char *str, int index);
+bool        is_map(char *str);
+bool        space_before(char *str, int index);
+bool        space_inside(char *start, char *end);
 
 //FREE
-void    free_cub(t_pcub **cub);
-void    print_free_exit(char *str, t_pcub *cub);
+void        free_cub(t_pcub **cub);
+void        print_free_exit(char *str, t_pcub *cub);
+void	    free_array(char ***ptr);
 
 #endif

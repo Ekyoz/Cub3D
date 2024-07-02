@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/06/26 17:14:00 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/02 15:48:16 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	free_array(char ***ptr)
+void	free_array(char ***ptr)
 {
 	int	i;
 
@@ -21,6 +21,8 @@ static void	free_array(char ***ptr)
 	{
 		while ((*ptr)[i])
 		{
+			// printf("i vaut %d\n", i);
+			// printf("%s", (*ptr)[i]);
 			if ((*ptr)[i])
 				free((*ptr)[i]);
 			(*ptr)[i] = NULL;
@@ -35,8 +37,14 @@ void free_cub(t_pcub **cub)
 {
 	if(*cub)
 	{
-		if((*cub)->texture)
-			free_array(&(*cub)->texture);
+		if((*cub)->notexture)
+			free((*cub)->notexture);
+		if((*cub)->sotexture)
+			free((*cub)->sotexture);
+		if((*cub)->eatexture)
+			free((*cub)->eatexture);
+		if((*cub)->wetexture)
+			free((*cub)->wetexture);
 		if((*cub)->map)
 			free_array(&(*cub)->map);
 		if((*cub)->filefd != -1)
