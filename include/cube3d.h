@@ -43,16 +43,12 @@ typedef struct s_pcub
     char *wetexture;
     char *eatexture;
     char **map;
+    int x_max_size;
+    int y_max_size;
     int filefd;
     int countorder;
     int linetexture;
     int linemap;
-    bool northtext;
-    bool southtext;
-    bool easttext;
-    bool westtext;
-    bool fcolor;
-    bool ccolor;
 } t_pcub;
 
 //PARSING
@@ -83,11 +79,18 @@ int        ft_tablen(char **tab);
 //MAPS
 void        get_height_map(t_pcub *cub);
 void        fill_map(t_pcub *cub);
+void        check_carac_map(t_pcub *cub);
+void        check_lines(t_pcub *cub);
+void        check_player_number(t_pcub *cub);
+void        get_xy_maxsize(t_pcub *cub);
+void        complete_map(t_pcub *cub);
+void        check_closing_map(t_pcub *cub);
 
 //UTILS
 bool        is_map(char *str);
 bool        space_before(char *str, int index);
 bool        space_inside(char *start, char *end);
+int         ft_strlen1(char *str, t_pcub *cub);
 
 //FREE
 void        free_cub(t_pcub **cub);

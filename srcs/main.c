@@ -10,8 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "cube3d.h"
+
+int ft_strlen1(char *str, t_pcub *cub)
+{
+	int	i;
+
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while (str[i])
+	{
+		i++;
+	}
+    if(i > 2147483646 || i < 0)
+    {
+        print_free_exit(MAP_TOO_BIG, cub);
+    }
+	return (i);
+}
 
 int main(int argc, char **argv) {
     

@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:39:44 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 15:12:08 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/03 23:14:07 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,9 @@
 
 //MAP
 #define NO_MAP "No map\n"
+#define EMPTY_LINE_END "Empty line at the end of the map\n"
+#define MAP_NOT_CLOSED "Map is not closed\n"
+#define NO_PLAYER "No player\n"
+#define TOO_MANY_PLAYER "To much player\n"
+#define OPEN_MAP "Map is not closed\n"
+#define MAP_TOO_BIG "Map is too big\n"

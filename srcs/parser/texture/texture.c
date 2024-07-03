@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 14:19:44 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/02 20:20:38 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,77 +18,33 @@ static void find_texture(char *str, int j, t_pcub *cub)
     // printf("dans la find texture str: %c\n", str[j]);
     if(str[j] == 'N' && str[j + 1] == 'O')
     {
-        if(cub->northtext == false && cub->countorder == 0)
-        {
-            if(space_before(str, j))
-                get_texture_face(cub, str, j, &(cub->notexture));
-            cub->northtext = true;
-            cub->countorder++;
-        }
-        else 
-            print_free_exit(WRONG_ORDER, cub);
+        if(space_before(str, j))
+            get_texture_face(cub, str, j, &(cub->notexture));
     }
     else if(str[j] == 'S' && str[j + 1] == 'O')
     {
-        if(cub->southtext == false && cub->countorder == 1)
-        {
-            if(space_before(str, j))
-                get_texture_face(cub, str, j, &(cub->sotexture));
-            cub->southtext = true;
-            cub->countorder++;
-        }
-        else 
-            print_free_exit(WRONG_ORDER, cub);
+        if(space_before(str, j))
+            get_texture_face(cub, str, j, &(cub->sotexture));
     }
     else if(str[j] == 'W' && str[j + 1] == 'E')
     {
-        if(cub->westtext == false && cub->countorder == 2)
-        {
-            if(space_before(str, j))
-                get_texture_face(cub, str, j, &(cub->wetexture));
-            cub->westtext = true;
-            cub->countorder++;
-        }
-        else 
-            print_free_exit(WRONG_ORDER, cub);
+        if(space_before(str, j))
+            get_texture_face(cub, str, j, &(cub->wetexture));
     }
     else if(str[j] == 'E' && str[j + 1] == 'A')
     {
-        if(cub->easttext == false && cub->countorder == 3)
-        {
-            if(space_before(str, j))
-                get_texture_face(cub, str, j, &(cub->eatexture));
-            cub->easttext = true;
-            cub->countorder++;
-        }
-        else 
-            print_free_exit(WRONG_ORDER, cub);
+        if(space_before(str, j))
+            get_texture_face(cub, str, j, &(cub->eatexture));
     }
     else if(str[j] == 'F' && str[j + 1] == ' ')
     {
-        if(cub->fcolor == false && cub->countorder == 4)
-        {
-            if(space_before(str,j))
-                get_color_floor(cub, str, &(cub->color));
-            cub->fcolor = true;
-            cub->countorder++;
-        }
-        else 
-            print_free_exit(WRONG_ORDER, cub);
+        if(space_before(str,j))
+            get_color_floor(cub, str, &(cub->color));
     }
     else if(str[j] == 'C' && str[j + 1] == ' ')
     {
-        if(cub->ccolor == false && cub->countorder == 5)
-        {
-            if(space_before(str,j))
-                get_color_ceiling(cub, str, &(cub->color));
-            cub->ccolor = true;
-            cub->countorder++;
-        }
-        else 
-        {
-            print_free_exit(WRONG_ORDER, cub);
-        }
+        if(space_before(str, j))
+            get_color_ceiling(cub, str, &(cub->color));
     }
     // printf("%s et %s et %s et %s\n", cub->notexture, cub->sotexture, cub->wetexture, cub->eatexture);
     // printf("le ceiling %d et floor %d\n", cub->color->r_ceiling, cub->color->r_floor);
@@ -138,6 +94,7 @@ static void put_texture(t_pcub *cub)
         str = get_next_line(cub->filefd);
         i++;
     }
+    printf("countorder = %d\n", cub->countorder);
     if(cub->countorder != 6)
         print_free_exit(WRONG_ORDER, cub);
 }
@@ -164,7 +121,7 @@ static void countline_texture(t_pcub *cub)
     free(str);
     if(cub->linetexture == 0)
         print_free_exit(EMPTY_FILE, cub);
-    printf("linetexture = %d\n", cub->linetexture);
+    // printf("linetexture = %d\n", cub->linetexture);
 }
 
 void get_texture(t_pcub *cub, char *argv1)

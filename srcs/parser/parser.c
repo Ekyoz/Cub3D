@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:21:21 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 15:49:54 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/03 23:34:17 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,21 @@
 // static void print_array(char **array)
 // {
 //     int i;
+//     int j;
 
 //     i = 0;
+//     printf("\n\n\n");
 //     if(array)
 //     {
 //         while(array[i])
 //         {
-//             printf("%s", array[i]);
+//             j = 0;
+//             while(array[i][j])
+//             {
+//                 printf("%d", array[i][j]);
+//                 j++;
+//             }
+//             printf("\n");
 //             i++;
 //         }
 //     }
@@ -58,12 +66,7 @@ t_pcub *init_cub()
     cub->countorder = 0;
     cub->linetexture = 0;
     cub->linemap = 0;
-    cub->northtext = false;
-    cub->southtext = false;
-    cub->easttext = false;
-    cub->westtext = false;
-    cub->fcolor = false;
-    cub->ccolor = false;
+    cub->x_max_size = 0;
     cub->notexture = NULL;
     cub->sotexture = NULL;
     cub->eatexture = NULL;
@@ -86,5 +89,12 @@ void parse_map(t_pcub *cub, int argc, char **argv)
     close(cub->filefd);
     cub->filefd = open_file(argv[1], cub);
     fill_map(cub);
+    get_xy_maxsize(cub);
+    check_carac_map(cub);
+    check_lines(cub);
+    check_player_number(cub);
+    complete_map(cub);
+    check_closing_map(cub);
+    printf("map complete\n"); 
     // print_array(cub->map);
 }

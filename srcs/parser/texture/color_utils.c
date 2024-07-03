@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:46:21 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/02 15:24:59 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:34:46 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void is_valid_color(char *str, t_pcub *cub)
     int i;
 
     i = 0;
-    printf("str %s\n", str);
     while(str[i])
     {
         if(str[i] == ' ' || str[i] == '\t' || str[i] == ',' ||

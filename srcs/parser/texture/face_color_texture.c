@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:32:48 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/02 12:57:20 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/02 18:37:37 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void get_texture_face(t_pcub *cub, char *str, int j, char **face)
         *face = ft_substr(str, start - str, end - start);
         if(!(*face))
             print_free_exit(NO_NAME_TEXTURE, cub);
+        cub->countorder++;
     }
     else
         print_free_exit(ERROR_FACE_TEXTURE, cub);
@@ -56,6 +57,7 @@ void get_color_ceiling(t_pcub *cub, char *str, t_color **color)
     if(cub->color->r_ceiling > 255 || cub->color->g_ceiling > 255 ||
         cub->color->b_ceiling > 255)
         print_free_exit(COLOR_NUMBER, cub);
+    cub->countorder++;
 }
 
 void get_color_floor(t_pcub *cub, char *str, t_color **color)
@@ -85,5 +87,6 @@ void get_color_floor(t_pcub *cub, char *str, t_color **color)
     if(cub->color->r_floor > 255 || cub->color->g_floor > 255 ||
         cub->color->b_floor > 255)
         print_free_exit(COLOR_NUMBER, cub);
+    cub->countorder++;
 }
 

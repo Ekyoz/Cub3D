@@ -6,7 +6,7 @@
 #    By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/07/02 13:02:37 by bastpoy          ###   ########.fr        #
+#    Updated: 2024/07/03 23:32:55 by bastpoy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
 FILE_GARBAGE_COLLECTOR 		    = free_functions
 
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser file utils map
+FILE_PARSER 		    = parser file utils
+
+FILE_MAP_DIR			= parser/map/
+FILE_MAP				= map map_utils check_line map_wall map_length
 
 FILE_TEXTURE_DIR		= parser/texture/
 FILE_TEXTURE			= texture texture_utils face_color_texture color_utils
@@ -32,12 +35,17 @@ FILE_TEXTURE			= texture texture_utils face_color_texture color_utils
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= raycasting
 
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_GARBAGE_COLLECTOR_DIR) $(FILE_TEXTURE_DIR)
+DIR_LIST				= $(FILE_PARSER_DIR)\
+							$(FILE_RAYCASTING_DIR)\
+							$(FILE_GARBAGE_COLLECTOR_DIR)\
+							$(FILE_TEXTURE_DIR)\
+							$(FILE_MAP_DIR)
 
 SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COLLECTOR_DIR), $(FILE_GARBAGE_COLLECTOR))
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
 SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
+SRC_FILES			+= $(addprefix $(FILE_MAP_DIR), $(FILE_MAP))
 
 #-------- LIBS --------#
 
