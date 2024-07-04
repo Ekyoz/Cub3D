@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:02:07 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/03 23:34:41 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:03:27 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void complete_map(t_pcub *cub)
 {
+    char *linecp;
     int i;
     int j;
 
@@ -23,7 +24,9 @@ void complete_map(t_pcub *cub)
         j = ft_strlen1(cub->map[i], cub);
         while(j < cub->x_max_size)
         {
-            cub->map[i] = ft_strjoin(cub->map[i], " ");
+            linecp = cub->map[i];
+            cub->map[i] = ft_strjoin(linecp, " ");
+            free(linecp);
             j++;
         }
         i++;
@@ -92,7 +95,8 @@ void fill_map(t_pcub *cub)
         print_free_exit(ERROR_MALLOC_INIT, cub);
     while(i < cub->linetexture)
     {
-        get_next_line(cub->filefd);
+        line = get_next_line(cub->filefd);
+        free(line);
         i++;
     }
     i = 0;

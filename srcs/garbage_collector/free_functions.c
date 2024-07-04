@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 15:48:16 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:11:34 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	free_array(char ***ptr)
 	{
 		while ((*ptr)[i])
 		{
-			// printf("i vaut %d\n", i);
-			// printf("%s", (*ptr)[i]);
 			if ((*ptr)[i])
 				free((*ptr)[i]);
 			(*ptr)[i] = NULL;
@@ -37,6 +35,8 @@ void free_cub(t_pcub **cub)
 {
 	if(*cub)
 	{
+		if((*cub)->color)
+			free_color(&(*cub)->color);
 		if((*cub)->notexture)
 			free((*cub)->notexture);
 		if((*cub)->sotexture)
@@ -54,6 +54,34 @@ void free_cub(t_pcub **cub)
 		}
 		free(*cub);
 		*cub = NULL;
+	}
+}
+
+void free_map(t_map **map)
+{
+	if(*map)
+	{
+		if((*map)->map)
+			free_array(&(*map)->map);
+		if((*map)->NO)
+			free((*map)->NO);
+		if((*map)->SO)
+			free((*map)->SO);
+		if((*map)->WE)
+			free((*map)->WE);
+		if((*map)->EA)
+			free((*map)->EA);	
+		free(*map);
+		*map = NULL;
+	}
+}
+
+void free_color(t_color **color)
+{
+	if(*color)
+	{
+		free(*color);
+		*color = NULL;
 	}
 }
 

@@ -33,9 +33,11 @@ int ft_strlen1(char *str, t_pcub *cub)
 int main(int argc, char **argv) {
     
     t_pcub *cub;
-
+    t_map *map;
     cub = init_cub();
+    map = init_map(cub);
     parse_map(cub, argc, argv);
-    free_cub(&cub);
+    put_cub_in_map(&cub, map);
+    free_map(&map);
     return 0;
 }

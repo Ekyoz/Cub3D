@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 18:30:10 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 18:37:25 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/04 15:22:39 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,16 @@ bool space_inside(char *start, char *end)
         j++;
     }
     return true;
+}
+
+int open_file(char *argv1, t_pcub *cub)
+{
+    int fd;
+
+    fd = open(argv1, O_RDONLY);
+    if(fd == -1)
+    {
+        print_free_exit(ERROR_OPEN_FILE, cub);
+    }
+    return fd;
 }

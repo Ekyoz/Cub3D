@@ -23,6 +23,19 @@
 #include "errormessage.h"
 #include "get_next_line.h"
 
+typedef struct s_map{
+    char **map;
+    int width;
+    int height;
+
+    char *NO;
+    char *SO;
+    char *WE;
+    char *EA;
+    int floor;
+    int ceiling;
+} t_map;
+
 typedef struct s_color
 {
     unsigned int r_ceiling;
@@ -51,10 +64,16 @@ typedef struct s_pcub
     int linemap;
 } t_pcub;
 
-//PARSING
-t_pcub      *init_cub();
+//UTILS PARING
 int         open_file(char *argv1, t_pcub *cub);
+
+//PARSING
 void        parse_map(t_pcub *cub, int argc, char **argv);
+
+//STRUCT MANAGE
+void        put_cub_in_map(t_pcub **cub, t_map *map);
+t_map       *init_map(t_pcub *cub);
+t_pcub      *init_cub();
 
 //TEXTURE
 void        get_texture(t_pcub *cub, char *argv1);
@@ -93,8 +112,10 @@ bool        space_inside(char *start, char *end);
 int         ft_strlen1(char *str, t_pcub *cub);
 
 //FREE
-void        free_cub(t_pcub **cub);
 void        print_free_exit(char *str, t_pcub *cub);
 void	    free_array(char ***ptr);
+void        free_cub(t_pcub **cub);
+void        free_color(t_color **color);
+void        free_map(t_map **map);
 
 #endif

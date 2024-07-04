@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 20:20:38 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/04 16:28:10 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // une fonction qui check la texture actuelle et qui verifie l'ordre a chaque fois
 static void find_texture(char *str, int j, t_pcub *cub)
 {
-    // printf("dans la find texture str: %c\n", str[j]);
     if(str[j] == 'N' && str[j + 1] == 'O')
     {
         if(space_before(str, j))
@@ -94,7 +93,7 @@ static void put_texture(t_pcub *cub)
         str = get_next_line(cub->filefd);
         i++;
     }
-    printf("countorder = %d\n", cub->countorder);
+    // printf("countorder = %d\n", cub->countorder);
     if(cub->countorder != 6)
         print_free_exit(WRONG_ORDER, cub);
 }
@@ -106,7 +105,6 @@ static void countline_texture(t_pcub *cub)
     str = get_next_line(cub->filefd);
     if(str == NULL)
         print_free_exit(EMPTY_FILE, cub);
-    // cub->texture = init_texture(cub);
     while(str != NULL && !is_map(str))
     {
         cub->linetexture++;
@@ -121,10 +119,9 @@ static void countline_texture(t_pcub *cub)
     free(str);
     if(cub->linetexture == 0)
         print_free_exit(EMPTY_FILE, cub);
-    // printf("linetexture = %d\n", cub->linetexture);
 }
 
-void get_texture(t_pcub *cub, char *argv1)
+void get_texture(t_pcub *cub,char *argv1)
 {
     check_arg_extension(argv1, cub);
     cub->filefd = open_file(argv1, cub);

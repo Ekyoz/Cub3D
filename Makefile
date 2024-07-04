@@ -6,7 +6,7 @@
 #    By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/07/03 23:32:55 by bastpoy          ###   ########.fr        #
+#    Updated: 2024/07/04 15:41:28 by bastpoy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
 FILE_GARBAGE_COLLECTOR 		    = free_functions
 
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser file utils
+FILE_PARSER 		    = parser utils struct
 
 FILE_MAP_DIR			= parser/map/
 FILE_MAP				= map map_utils check_line map_wall map_length
