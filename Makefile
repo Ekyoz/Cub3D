@@ -16,20 +16,40 @@ NAME				= "cube3d"
 
 #-------- FILES --------#
 
-HEADER_FILES			= cube3d
-SRC_FILES		    	= main
+HEADER_FILES			= cube3d structs define
+SRC_FILES		    	= main init loop
 TEST_FILES  			=
 
 FILE_PARSER_DIR 	    = parser/
 FILE_PARSER 		    = parser
 
 FILE_RAYCASTING_DIR		= raycasting/
-FILE_RAYCASTING			= raycasting
+FILE_RAYCASTING			= create_rays rays_collisions dda
 
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR)
+FILE_RENDER_DIR			= render/
+FILE_RENDER				= floor_celling rays_render
+
+FILE_HOOKS_DIR			= hooks/
+FILE_HOOKS				= keyboard mouse
+
+FILE_PLAYER_DIR			= player/
+FILE_PLAYER				= player move rotate
+
+FILE_COLORS_DIR			= colors/
+FILE_COLORS				= lerp rgb
+
+FILE_MATH_DIR			= maths/
+FILE_MATH				= vectors deg_rad direction others
+
+DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_HOOKS_DIR) $(FILE_PLAYER_DIR) $(FILE_MATH_DIR) $(FILE_RENDER_DIR) $(FILE_COLORS_DIR)
 
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
+SRC_FILES			+= $(addprefix $(FILE_HOOKS_DIR), $(FILE_HOOKS))
+SRC_FILES			+= $(addprefix $(FILE_PLAYER_DIR), $(FILE_PLAYER))
+SRC_FILES			+= $(addprefix $(FILE_MATH_DIR), $(FILE_MATH))
+SRC_FILES			+= $(addprefix $(FILE_RENDER_DIR), $(FILE_RENDER))
+SRC_FILES			+= $(addprefix $(FILE_COLORS_DIR), $(FILE_COLORS))
 
 #-------- LIBS --------#
 
@@ -39,21 +59,19 @@ LIBFT_ARCHIVE		= $(LIBFT_DIR)/libft.a
 GNL_DIR				= $(INCLUDE_DIR)/GNL
 GNL_ARCHIVE			= $(GNL_DIR)/libgnl.a
 
-MLX_DIR				= $(INCLUDE_DIR)/mlx
+MLX_DIR				= $(INCLUDE_DIR)/mlx-mac
 MLX_ARCHIVE			= $(MLX_DIR)/libmlx.a
 
 LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR) $(MLX_DIR)
 LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE) $(MLX_ARCHIVE)
 
 #-------- FLAGS --------#
-CFLAGS 				= -Wall -Wextra -Werror -g3
+CFLAGS 				= -Wall -Wextra -g3
 CFLAGS_DEBUG		= -Wall -Wextra -g3
-CFLAGS_EXEC			= -Wall -Wextra -Werror -g3
-CFLAGS_PARSING		= -Wall -Wextra -Werror -g3
 CFLAGS_TEST			= -g3
-INCLUDES			= -I$(MLX_DIR) -O3
-LIBFLAGS			=  -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
-VFALGS				= -s --leak-check=full --track-origins=yes --suppressions=supp.supp --show-leak-kinds=all
+INCLUDES			= -I$(MLX_DIR)
+LIBFLAGS			= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+VFALGS				= -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 
 #------------------------------------------------------------------------------#
 #----------------------------- DON'T TOUCH BELOW -----------------------------#

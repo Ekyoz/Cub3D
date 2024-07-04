@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   others.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <atresall@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/27 15:27:24 by atresall          #+#    #+#             */
-/*   Updated: 2024/06/27 15:27:24 by atresall         ###   ########.fr       */
+/*   Created: 2024/07/02 12:05:32 by alexandre         #+#    #+#             */
+/*   Updated: 2024/07/02 12:05:32 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+float ft_abs_f(float nb)
+{
+	if (nb < 0.0f)
+		return (-nb);
+	return (nb);
+}
