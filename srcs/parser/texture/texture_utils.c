@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 08:08:17 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/02 18:23:25 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 17:33:28 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,31 @@ void texture_in_line(char *str)
     }
 }
 
-void check_texture_extension(t_pcub *cub, char *texture)
+char *check_texture_extension(t_pcub *cub, char *texture)
 {
     int length;
+    char *trimspace;
+    char *test;
+    char *texturecp;
 
     length = ft_strlen(texture);
     if(length < 4)
         print_free_exit(TEXTURE_PROBLEM, cub);
-    if(ft_strncmp(&texture[length - 4], ".xpm", 4) != 0)
-        print_free_exit(WRONG_EXTENSION, cub);
+    trimspace = ft_strnstr(texture, ".xpm", length);
+    if(trimspace)
+    {
+        test = trimspace + 4;
+        while(*test)
+        {
+            while(*test && ft_isspace(*test))
+                test++;
+            if(*test)
+                print_free_exit(TEXTURE_PROBLEM, cub);
+        }
+    }
+    else
+        print_free_exit(TEXTURE_PROBLEM, cub);
+    texturecp = ft_substr(texture, 0, trimspace + 4 - texture);
+    free(texture);
+    return (texturecp);
 }

@@ -51,8 +51,8 @@ int main(int argc, char **argv) {
     t_pcub *cub;
     t_map *map;
     cub = init_cub();
-    map = init_map(cub);
     parse_map(cub, argc, argv);
+    map = init_map(cub);
     put_cub_in_map(&cub, map);
     print_map_struct(map);
     free_map(&map);

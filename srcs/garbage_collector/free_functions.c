@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/04 16:11:34 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 15:44:02 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void free_color(t_color **color)
 
 void print_free_exit(char *str, t_pcub *cub)
 {
-    if(str)
-        printf("%s",str);
+	if(str)
+        printf("\n\n\033[31m==%s==\033[0m\n\n",str);
     free_cub(&cub);
     exit(1);
 }

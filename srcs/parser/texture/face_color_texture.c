@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:32:48 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/04 16:26:36 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 16:07:19 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,14 @@ void get_color_ceiling(t_pcub *cub, char *str, t_color **color)
     is_valid_color(start, cub);
     split_color = ft_split(start, ',');
     if(!split_color)
+    {
+        if(str)
+            free(str);
+        str = NULL;
         print_free_exit(COMB_COLOR, cub);
+    }
     while(split_color[nb])
-        nb += check_space_inside(cub, split_color[nb]);
+        nb += check_space_inside(cub, split_color[nb], split_color, str);
     if(ft_tablen(split_color) == 3 && nb == 3)
     {
         (*color)->r_ceiling = ft_atoi(split_color[0]);
@@ -51,7 +56,11 @@ void get_color_ceiling(t_pcub *cub, char *str, t_color **color)
         (*color)->b_ceiling = ft_atoi(split_color[2]);
     }
     else
+    {
+        free_array(&split_color);
+        free(str);
         print_free_exit(TREE_COLOR, cub);
+    }
     color_hex_ceiling(cub);
     free_array(&split_color);
     if(cub->color->r_ceiling > 255 || cub->color->g_ceiling > 255 ||
@@ -71,9 +80,14 @@ void get_color_floor(t_pcub *cub, char *str, t_color **color)
     is_valid_color(start, cub);
     split_color = ft_split(start, ',');
     if(!split_color)
+    {
+        if(str)
+            free(str);
+        str = NULL;
         print_free_exit(COMB_COLOR, cub);
+    }
     while(split_color[nb])
-        nb += check_space_inside(cub, split_color[nb]);
+        nb += check_space_inside(cub, split_color[nb], split_color, str);
     if(ft_tablen(split_color) == 3 && nb == 3)
     {
         (*color)->r_floor = ft_atoi(split_color[0]);
@@ -81,7 +95,11 @@ void get_color_floor(t_pcub *cub, char *str, t_color **color)
         (*color)->b_floor = ft_atoi(split_color[2]);
     }
     else
+    {
+        free_array(&split_color);
+        free(str);
         print_free_exit(TREE_COLOR, cub);
+    }
     color_hex_floor(cub);
     free_array(&split_color);
     if(cub->color->r_floor > 255 || cub->color->g_floor > 255 ||

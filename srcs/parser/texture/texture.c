@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/04 16:28:10 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 17:28:18 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ static void put_texture(t_pcub *cub)
         str = get_next_line(cub->filefd);
         i++;
     }
-    // printf("countorder = %d\n", cub->countorder);
     if(cub->countorder != 6)
         print_free_exit(WRONG_ORDER, cub);
 }
@@ -129,8 +128,8 @@ void get_texture(t_pcub *cub,char *argv1)
     close(cub->filefd);
     cub->filefd = open_file(argv1, cub);
     put_texture(cub);
-    // check_texture_extension(cub, cub->notexture);
-    // check_texture_extension(cub, cub->sotexture);
-    // check_texture_extension(cub, cub->eatexture);
-    // check_texture_extension(cub, cub->wetexture);
+    cub->notexture = check_texture_extension(cub, cub->notexture);
+    cub->sotexture = check_texture_extension(cub, cub->sotexture);
+    cub->eatexture = check_texture_extension(cub, cub->eatexture);
+    cub->wetexture = check_texture_extension(cub, cub->wetexture);
 }

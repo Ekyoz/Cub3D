@@ -78,7 +78,7 @@ t_pcub      *init_cub();
 //TEXTURE
 void        get_texture(t_pcub *cub, char *argv1);
 void        check_arg_extension(char *argv1, t_pcub *cub);
-void        check_texture_extension(t_pcub *cub, char *texture);
+char        *check_texture_extension(t_pcub *cub, char *texture);
 char        **init_texture(t_pcub *cub);
 void        texture_in_line(char *str);
 int	        check_cmp(char *line);
@@ -90,7 +90,7 @@ void get_texture_face(t_pcub *cub, char *str, int j, char **face);
 void        get_color_ceiling(t_pcub *cub, char *str, t_color **color);
 void        get_color_floor(t_pcub *cub, char *str, t_color **color);
 void        is_valid_color(char *str, t_pcub *cub);
-int         check_space_inside(t_pcub *cub, char *str);
+int         check_space_inside(t_pcub *cub, char *str, char **split_color, char *line);
 void        color_hex_floor(t_pcub *cub);
 void        color_hex_ceiling(t_pcub *cub);
 int        ft_tablen(char **tab);

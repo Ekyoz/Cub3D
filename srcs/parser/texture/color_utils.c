@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:46:21 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/02 18:34:46 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 16:01:26 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void is_valid_color(char *str, t_pcub *cub)
         else
         {
             printf("la valeur %c\n", str[i]);
+            free(str);
             print_free_exit(BAD_COLOR, cub);
         }
         if(str[i] != '\0')
@@ -57,7 +58,7 @@ void is_valid_color(char *str, t_pcub *cub)
     }
 }
 
-int check_space_inside(t_pcub *cub, char *str)
+int check_space_inside(t_pcub *cub, char *str, char **split_color, char *line)
 {
     int i;
 
@@ -68,7 +69,15 @@ int check_space_inside(t_pcub *cub, char *str)
             i++;
         if((str[i] >= '0' && str[i] <= '9' && str[i + 1] == ' ') ||
             (str[i] >= '0' && str[i] <= '9' && str[i + 1] == '\t'))
-            print_free_exit(BAD_COLOR, cub);
+            {
+                if(line)
+                {
+                    free(line);
+                    line = NULL;
+                }
+                free_array(&split_color);
+                print_free_exit(BAD_COLOR, cub);
+            }
         i++;
     }
     return(1);
