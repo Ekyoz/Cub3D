@@ -29,6 +29,22 @@ int ft_strlen1(char *str, t_pcub *cub)
     }
 	return (i);
 }
+static void print_map_struct(t_map *map)
+{
+    printf("\n\n =======TEXTURE========\n\n");
+    printf("%s\n", map->NO);
+    printf("%s\n", map->SO);
+    printf("%s\n", map->WE);
+    printf("%s\n", map->EA);
+    printf("\n\n =======COLOR========\n\n");
+    printf("%d\n", map->floor);
+    printf("%d\n", map->ceiling);
+    printf("\n\n =======MAP========\n\n");
+    for(int i = 0; i < map->height; i++)
+    {
+        printf("%s\n", map->map[i]);
+    }
+}
 
 int main(int argc, char **argv) {
     
@@ -38,6 +54,7 @@ int main(int argc, char **argv) {
     map = init_map(cub);
     parse_map(cub, argc, argv);
     put_cub_in_map(&cub, map);
+    print_map_struct(map);
     free_map(&map);
     return 0;
 }

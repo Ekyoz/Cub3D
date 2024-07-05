@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:21:21 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/04 16:27:51 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/05 15:24:32 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void parse_map(t_pcub *cub, int argc, char **argv)
     check_player_number(cub);
     complete_map(cub);
     check_closing_map(cub);
-    printf("\n\n====map complete=====\n\n"); 
 }
