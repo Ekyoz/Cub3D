@@ -12,39 +12,29 @@
 
 #include "cube3d.h"
 
-static t_vector_f interpolate(t_vector_f start, t_vector_f end, float interpolate_value);
-
 void create_rays(t_cub *cub)
 {
-	t_vector_f fov_vect[2];
-	t_vector_f vector;
-	double direction;
-	double interpolate_value;
-	int	direction_len;
-	int i;
+	t_vector_f vect_opposite[2];
 
-	i = -1;
-	direction = get_direction(vector_f_to_d(cub->player.pos), cub->player.view_dst_pos);
+	double angle = get_angle(vector_f_to_d(cub->player.pos), cub->player.view_dst_pos);
 
-	direction_len = tan(degree_to_radian(FOV / 2)) * VIEW_DIST;
+	t_vector_d view_dst_pos = create_vect_d_from_origin(vector_f_to_d(cub->player.pos), angle, VIEW_DIST);
+	draw_circle_color_radius(cub, view_dst_pos, GREEN, 4);
 
-	fov_vect[0] = create_vect_f_from_origin(vector_d_to_f(cub->player.view_dst_pos), direction + PI_2, direction_len);
-	fov_vect[1] = create_vect_f_from_origin(vector_d_to_f(cub->player.view_dst_pos), direction - PI_2, direction_len);
+	int opposite_len = tan(degree_to_radian(FOV / 2)) * VIEW_DIST;
 
-	interpolate_value = 1.0f / (cub->rays_nb - 1.0f);
-	while (++i < cub->rays_nb)
-	{
-		vector = interpolate(fov_vect[0], fov_vect[1], interpolate_value * i);
-		cub->rays[i].angle = get_direction_f(cub->player.pos, vector);
-		cub->rays[i].hit_point = vector;
+	vect_opposite[0] = create_vect_f_from_origin(vector_d_to_f(view_dst_pos), angle + PI_2, opposite_len);
+	vect_opposite[1] = create_vect_f_from_origin(vector_d_to_f(view_dst_pos), angle - PI_2, opposite_len);
+
+//	bresenham(cub, vector_f_to_d(cub->player.pos), cub->mouse.pos, YELLOW);
+	draw_circle_color_radius(cub, vector_f_to_d(vect_opposite[0]), BLUE, 4);
+	draw_circle_color_radius(cub, vector_f_to_d(vect_opposite[1]), RED, 4);
+
+	double inter = 1.0f / (cub->rays_nb - 1.0f);
+
+	for (int i = 0; i < cub->rays_nb; ++i) {
+		t_vector_f ray_end = vector_f_lerp(vect_opposite[0], vect_opposite[1], inter * i);
+		cub->rays[i].angle = get_angle_f(cub->player.pos, ray_end);
+		cub->rays[i].hit_point = ray_end;
 	}
-}
-
-static t_vector_f interpolate(t_vector_f start, t_vector_f end, float interpolate_value)
-{
-	t_vector_f vector;
-
-	vector.x = start.x + (end.x - start.x) * interpolate_value;
-	vector.y = start.y + (end.y - start.y) * interpolate_value;
-	return (vector);
 }

@@ -14,7 +14,6 @@
 
 void player_input(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 {
-	printf("Player pos: %f %f\n", cub->player.pos.x, cub->player.pos.y);
 	if (keyboard->keyboard[KEY_W] == 1)
 		move_forward(cub);
 	if (keyboard->keyboard[KEY_S] == 1)
@@ -35,11 +34,17 @@ void player_input(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 			cub->player.map = 1;
 	}
 
-	if (mouse->move.x > 100)
-		rotate_right(&cub->player, -(float)mouse->move.x / ROT_SPEED_MOUSE);
-	if (mouse->move.x < 100)
-		rotate_left(&cub->player, (float)mouse->move.x / ROT_SPEED_MOUSE);
-	mlx_mouse_move(cub->mlx.win, WIDTH / 2, HEIGHT / 2);
+	if (cub->player.map == 0)
+	{
+		if (mouse->move.x > 100)
+			rotate_right(&cub->player, -(float)mouse->move.x / ROT_SPEED_MOUSE);
+		if (mouse->move.x < 100)
+			rotate_left(&cub->player, (float)mouse->move.x / ROT_SPEED_MOUSE);
+		mlx_mouse_hide();
+		mlx_mouse_move(cub->mlx.win, WIDTH / 2, HEIGHT / 2);
+	}
+	else if (cub->player.map == 1)
+		mlx_mouse_show();
 
 	mouse->move.x = 0;
 
@@ -47,15 +52,3 @@ void player_input(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 	cub->player.view_dst_pos.y = (cub->player.dir.y * VIEW_DIST) + cub->player.pos.y;
 }
 
-int		is_colliding_cell(t_cub *cub, float x, float y)
-{
-	t_vector_d	cell;
-
-	if (!is_in_map(cub, create_d_vect(x, y)))
-		return (0);
-	cell.x = x / TILE_SIZE;
-	cell.y = y / TILE_SIZE;
-	if (cub->map.map[cell.y][cell.x] == '1') // Wall
-		return (1);
-	return (0);
-}

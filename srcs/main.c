@@ -15,8 +15,8 @@
 int init_tab(t_map *map)
 {
 	// Setting initial tab dimensions
-	map->height = 10;
-	map->width = 10;
+	map->height = 20;
+	map->width = 20;
 	// Allocating tab
 	map->map = malloc(sizeof(char *) * map->height);
 	if (map->map == NULL) // Checking allocation error
@@ -56,8 +56,8 @@ int main()
 
 	cub.map.NO = "./assets/walls/wood.xpm";
 	cub.map.SO = "./assets/walls/blue_bricks.xpm";
-	cub.map.WE = "./assets/walls/red_bricks.xpm";
-	cub.map.EA = "./assets/walls/grey_bricks.xpm";
+	cub.map.WE = "./assets/walls/red_brick.xpm";
+	cub.map.EA = "./assets/walls/grey_brick.xpm";
 	cub.player.pos.x = 5 * TILE_SIZE + TILE_SIZE / 4;
 	cub.player.pos.y = 5 * TILE_SIZE + TILE_SIZE / 4;
 
@@ -70,19 +70,10 @@ int main()
 		exit(1);
 	if (init_rays(&cub) == 1)
 		exit(1);
-	if (init_mouse(&cub.mouse, cub.mlx.win) == 1)
+	if (init_input(&cub.mouse, &cub.keyboard, cub.mlx.win) == 1)
 		exit(1);
-
-	cub.map.walls[0].texture = mlx_xpm_file_to_image(cub.mlx.mlx, cub.map.NO, &cub.map.walls[0].width, &cub.map.walls[0].height);
-	cub.map.walls[0].addr = mlx_get_data_addr(cub.map.walls[0].texture, &cub.map.walls[0].bits_per_pixel, &cub.map.walls[0].line_length, &cub.map.walls[0].endian);
-	cub.map.walls[1].texture = mlx_xpm_file_to_image(cub.mlx.mlx, cub.map.SO, &cub.map.walls[1].width, &cub.map.walls[1].height);
-	cub.map.walls[1].addr = mlx_get_data_addr(cub.map.walls[1].texture, &cub.map.walls[1].bits_per_pixel, &cub.map.walls[1].line_length, &cub.map.walls[1].endian);
-	cub.map.walls[2].texture = mlx_xpm_file_to_image(cub.mlx.mlx, cub.map.WE, &cub.map.walls[2].width, &cub.map.walls[2].height);
-	cub.map.walls[2].addr = mlx_get_data_addr(cub.map.walls[2].texture, &cub.map.walls[2].bits_per_pixel, &cub.map.walls[2].line_length, &cub.map.walls[2].endian);
-	cub.map.walls[3].texture = mlx_xpm_file_to_image(cub.mlx.mlx, cub.map.EA, &cub.map.walls[3].width, &cub.map.walls[3].height);
-	cub.map.walls[3].addr = mlx_get_data_addr(cub.map.walls[3].texture, &cub.map.walls[3].bits_per_pixel, &cub.map.walls[3].line_length, &cub.map.walls[3].endian);
-
-
+	if (init_texture(&cub) == 1)
+		exit(1);
 
 	loop(&cub);
 }

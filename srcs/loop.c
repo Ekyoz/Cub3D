@@ -26,17 +26,6 @@ void clear_window(t_cub *data)
 	}
 }
 
-void draw_rect_filled_color(t_cub *data, t_vector_d top_left, t_vector_d bottom_right, int color)
-{
-	for (int y = top_left.y; y < bottom_right.y; y++)
-	{
-		for (int x = top_left.x; x < bottom_right.x; x++)
-		{
-			my_mlx_pixel_put(&data->mlx, x, y, color);
-		}
-	}
-}
-
 void	print_grid(t_cub *data)
 {
 	// Walls
@@ -52,23 +41,6 @@ void	print_grid(t_cub *data)
 	}
 }
 
-void draw_circle(t_cub *data, t_vector_d center)
-{
-	t_vector_d pos;
-	int radius = 2;
-
-	for (int y = center.y - radius; y < center.y + radius; y++)
-	{
-		for (int x = center.x - radius; x < center.x + radius; x++)
-		{
-			pos.y = (center.y - y) * (center.y - y);
-			pos.x = (center.x - x) * (center.x - x);
-			if ((float)(pos.x + pos.y) - (radius * radius) < 0.1f)
-				my_mlx_pixel_put(&data->mlx, x, y, PINK);
-		}
-	}
-}
-
 void loop(t_cub *cub)
 {
 	mlx_hook(cub->mlx.win, 2, 1L << 0, key_press, &cub->keyboard);
@@ -77,23 +49,21 @@ void loop(t_cub *cub)
 	mlx_hook(cub->mlx.win, 5, 1L << 3, mouse_release, &cub->mouse);
 	mlx_hook(cub->mlx.win, 6, 1L << 6, update_mouse_pos, &cub->mouse);
 	mlx_hook(cub->mlx.win, 17, 1L << 0, (int (*)()) exit, NULL); // Ferme la fenetre avec la croix
+//	update(cub);
 	mlx_loop_hook(cub->mlx.mlx, update, cub);
 	mlx_loop(cub->mlx.mlx);
 }
 
 void  set_grid_cell(t_cub *cub, int x, int y)
 {
-	// Converting pixel coordinates into tab coordinates
 	t_vector_d tab_pos = {
 			x / TILE_SIZE, // x
 			y / TILE_SIZE // y
 	};
 
-	// Checking out of range coordinates
 	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
 		return;
 
-	// Changing cell value according to mouse button
 	if (cub->mouse.button == LMB && cub->mouse.pressed == 1)
 		cub->map.map[tab_pos.y][tab_pos.x] = '1';
 	else if (cub->mouse.button == RMB && cub->mouse.pressed == 1)
@@ -107,10 +77,10 @@ static int update(t_cub *cub)
 	if (cub->player.map)
 	{
 		clear_window(cub);
-//		set_grid_cell(cub, cub->mouse.pos.x, cub->mouse.pos.y); // Set walls
+		set_grid_cell(cub, cub->mouse.pos.x, cub->mouse.pos.y); // Set walls
 		print_grid(cub); // Show walls
-		bresenham(cub, vector_f_to_d(cub->player.pos), vector_f_to_d(cub->player.dir), YELLOW);
-		draw_circle(cub, vector_f_to_d(cub->player.pos)); // Player visualization
+		bresenham(cub, vector_f_to_d(cub->player.pos), cub->player.view_dst_pos, GREEN);
+		draw_circle_color_radius(cub, vector_f_to_d(cub->player.pos), RED, 5);
 	}
 
 	create_rays(cub);
@@ -122,5 +92,6 @@ static int update(t_cub *cub)
 	}
 
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->mlx.img, 0, 0);
+	render_map(cub);
 	return (0);
 }

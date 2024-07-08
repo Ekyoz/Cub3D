@@ -32,16 +32,3 @@ int	color_lerp(int color1, int color2, float timestamp)
 	return (create_rgbt(r, g, b, 1));
 }
 
-int	get_text_pix(t_texture *text, int x, int y)
-{
-	int	color;
-
-	if (x < 0 || x >= text->width)
-		return (0);
-	if (y < 0 || y >= text->height)
-		return (0);
-
-	color = (*(int *)text->addr + (y * text->line_length) + (x * (text->bits_per_pixel / 8)));
-
-	return (color);
-}

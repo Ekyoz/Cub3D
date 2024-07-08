@@ -1,1 +1,7 @@
 CUBE 3D
+
+
+NORD: YELLOW - x:0 y:-1
+SUD: ROUGE - x:0 y:1
+EST: GREEN x:1 y:0
+OUEST: BLUE x:-1 y:0

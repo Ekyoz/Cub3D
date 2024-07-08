@@ -6,11 +6,14 @@
 /*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:12:45 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/01 16:12:45 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/05 14:42:51 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
+
+static float coll_x(t_vector_f dir);
+static float coll_y(t_vector_f dir);
 
 void move_forward(t_cub *cub)
 {
@@ -19,15 +22,12 @@ void move_forward(t_cub *cub)
 			cub->player.dir.y * MOVE_SPEED
 	};
 
-	t_vector_f *p_pos = &cub->player.pos; // Reference to player pos
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x + coll_x(cub->player.dir), cub->player.pos.y))
+		cub->player.pos.x += new_pos.x;
 
-// Check collision on X coordinate
-	if (!is_colliding_cell(cub, p_pos->x + new_pos.x, p_pos->y))
-		p_pos->x += new_pos.x;
-
-// Check collision on Y coordinate
-	if (!is_colliding_cell(cub, p_pos->x, p_pos->y + new_pos.y))
-		p_pos->y += new_pos.y;
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y +
+			coll_y(cub->player.dir)))
+		cub->player.pos.y += new_pos.y;
 }
 
 void move_backward(t_cub *cub)
@@ -37,15 +37,11 @@ void move_backward(t_cub *cub)
 			cub->player.dir.y * MOVE_SPEED
 	};
 
-	t_vector_f *p_pos = &cub->player.pos; // Reference to player pos
+	if (!is_colliding_cell(cub, cub->player.pos.x - new_pos.x - coll_x(cub->player.dir), cub->player.pos.y))
+		cub->player.pos.x -= new_pos.x;
 
-// Check collision on X coordinate
-	if (!is_colliding_cell(cub, p_pos->x + new_pos.x, p_pos->y))
-		p_pos->x -= new_pos.x;
-
-// Check collision on Y coordinate
-	if (!is_colliding_cell(cub, p_pos->x, p_pos->y - new_pos.y))
-		p_pos->y -= new_pos.y;
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y - new_pos.y - coll_y(cub->player.dir)))
+		cub->player.pos.y -= new_pos.y;
 }
 
 void move_left(t_cub *cub)
@@ -60,15 +56,11 @@ void move_left(t_cub *cub)
 			new_dir.y * MOVE_SPEED
 	};
 
-	t_vector_f *p_pos = &cub->player.pos; // Reference to player pos
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y))
+		cub->player.pos.x += new_pos.x;
 
-// Check collision on X coordinate
-	if (!is_colliding_cell(cub, p_pos->x + new_pos.x, p_pos->y))
-		p_pos->x += new_pos.x;
-
-// Check collision on Y coordinate
-	if (!is_colliding_cell(cub, p_pos->x, p_pos->y + new_pos.y))
-		p_pos->y += new_pos.y;
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y))
+		cub->player.pos.y += new_pos.y;
 }
 
 void move_right(t_cub *cub)
@@ -83,13 +75,28 @@ void move_right(t_cub *cub)
 			new_dir.y * MOVE_SPEED
 	};
 
-	t_vector_f *p_pos = &cub->player.pos; // Reference to player pos
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y))
+		cub->player.pos.x += new_pos.x;
 
-// Check collision on X coordinate
-	if (!is_colliding_cell(cub, p_pos->x + new_pos.x, p_pos->y))
-		p_pos->x += new_pos.x;
-
-// Check collision on Y coordinate
-	if (!is_colliding_cell(cub, p_pos->x, p_pos->y + new_pos.y))
-		p_pos->y += new_pos.y;
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y))
+		cub->player.pos.y += new_pos.y;
 }
+
+static float coll_x(t_vector_f dir)
+{
+	if (dir.x > 0)
+		return 5.0f;
+	else if (dir.x < 0)
+		return -5.0f;
+	return 0.0f;
+}
+
+static float coll_y(t_vector_f dir)
+{
+	if (dir.y > 0)
+		return 5.0f;
+	else if (dir.y < 0)
+		return -5.0f;
+	return 0.0f;
+}
+

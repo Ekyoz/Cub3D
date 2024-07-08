@@ -6,7 +6,7 @@
 /*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:46:58 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/01 16:46:58 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/05 18:58:38 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,59 @@ t_vector_d create_d_vect(int x, int y)
 	vector.x = x;
 	vector.y = y;
 	return (vector);
+}
+
+void	set_vector_d(t_vector_d *vector, int x, int y)
+{
+	vector->x = x;
+	vector->y = y;
+}
+
+void	set_vector_f(t_vector_f *vector, float x, float y)
+{
+	vector->x = x;
+	vector->y = y;
+}
+
+t_vector_d	vector_d_lerp(t_vector_d start, t_vector_d end, float timestamp)
+{
+	t_vector_d	vector;
+	int			dx;
+	int			dy;
+
+	dx = end.x - start.x;
+	dy = end.y - start.y;
+	vector.x = start.x + dx * timestamp;
+	vector.y = start.y + dy * timestamp;
+	return (vector);
+}
+
+t_vector_f	vector_f_lerp(t_vector_f start, t_vector_f end, float timestamp)
+{
+	t_vector_f	vector;
+	float		dx;
+	float		dy;
+
+	dx = end.x - start.x;
+	dy = end.y - start.y;
+	vector.x = start.x + dx * timestamp;
+	vector.y = start.y + dy * timestamp;
+	return (vector);
+}
+
+t_vector_d	rotate_vector_d(t_vector_d vector, double radian)
+{
+	t_vector_d	new_vect;
+
+	new_vect.x = vector.x * cos(radian) - vector.y * sin(radian);
+	new_vect.y = vector.x * sin(radian) + vector.y * cos(radian);
+	return (new_vect);
+}
+t_vector_f	rotate_vector_f(t_vector_f vector, double radian)
+{
+	t_vector_f	new_vect;
+
+	new_vect.x = vector.x * cos(radian) - vector.y * sin(radian);
+	new_vect.y = vector.x * sin(radian) + vector.y * cos(radian);
+	return (new_vect);
 }

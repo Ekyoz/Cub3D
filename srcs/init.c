@@ -38,13 +38,32 @@ int init_rays(t_cub *cub)
 	return 0;
 }
 
-int init_mouse(t_mouse *mouse, void *win)
+int init_input(t_mouse *mouse, t_keyboard *keyboard, void *win)
 {
 	mouse->pos.x = WIDTH / 2;
 	mouse->pos.y = HEIGHT / 2;
 	mouse->move.x = 0;
 	mouse->move.y = 0;
-	mlx_mouse_hide();
+	mouse->pressed = 0;
+	keyboard->keyboard[KEY_W] = 0;
+	keyboard->keyboard[KEY_A] = 0;
+	keyboard->keyboard[KEY_S] = 0;
+	keyboard->keyboard[KEY_D] = 0;
+	keyboard->keyboard[KEY_UP] = 0;
+	keyboard->keyboard[KEY_DOWN] = 0;
+	keyboard->keyboard[KEY_LEFT] = 0;
+	keyboard->keyboard[KEY_RIGHT] = 0;
+//	mlx_mouse_hide();
 	mlx_mouse_move(win, mouse->pos.x, mouse->pos.y);
+	return 0;
+}
+
+int init_texture(t_cub *cub)
+{
+	cub->map.walls[0] = load_texture(cub, cub->map.NO);
+	cub->map.walls[1] = load_texture(cub, cub->map.SO);
+	cub->map.walls[2] = load_texture(cub, cub->map.EA);
+	cub->map.walls[3] = load_texture(cub, cub->map.WE);
+
 	return 0;
 }

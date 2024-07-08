@@ -8,6 +8,7 @@
 # include <time.h>
 # include <fcntl.h>
 #include "mlx.h"
+#include "libft.h"
 
 // WINDOWS SETTINGS
 
@@ -16,9 +17,10 @@
 
 // MAP SETTINGS
 #define TILE_SIZE 40
+#define MAP_RADIUS 200
 
 // VIEW SETTINGS
-#define FOV 66
+#define FOV 60
 #define VIEW_DIST 800
 
 // SPEED
