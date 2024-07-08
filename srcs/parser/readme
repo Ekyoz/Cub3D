@@ -1,0 +1,39 @@
+---------------README PARSING---------------
+
+
+-------TEXTURE ET COULEUR   -------
+
+- gerer les espaces, tab, retour a la ligne
+- commencer par NO, SO, WE, EA
+- espace obligatoire apres chaque code
+    - Si espace et retour a la ligne ou autre, erreur
+    - Check du path de la texture
+    - retour a la ligne a la fin
+- derniere couleur
+
+FAISABILITE:
+
+- decouper en texture et couleur
+- Pour recuperer les textures
+    - j'itere dans mon decoupage en verifiant si je trouve NO, SO, WE, EA, F, C
+    - je trouve 6 textures dans l'ordre 
+avoir la last couleur et un 1 pour pouvoir passer a la map
+
+
+-------MAP-------
+
+- Des 0, 1, N, S, E, W
+
+- ok
+11
+101
+111
+
+11
+10111
+10111
+11
+
+- pas ok
+
+1112

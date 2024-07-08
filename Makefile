@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atresall <bpoyet@student.42.fr>            +#+  +:+       +#+         #
+#    By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/06/06 19:25:32 by atresall         ###   ########.fr        #
+#    Updated: 2024/07/04 15:41:28 by bastpoy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,17 @@ HEADER_FILES			= cube3d structs define
 SRC_FILES		    	= main init loop
 TEST_FILES  			=
 
+FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
+FILE_GARBAGE_COLLECTOR 		    = free_functions
+
 FILE_PARSER_DIR 	    = parser/
-FILE_PARSER 		    = parser
+FILE_PARSER 		    = parser utils struct
+
+FILE_MAP_DIR			= parser/map/
+FILE_MAP				= map map_utils check_line map_wall map_length
+
+FILE_TEXTURE_DIR		= parser/texture/
+FILE_TEXTURE			= texture texture_utils face_color_texture color_utils
 
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= create_rays rays_collisions dda
@@ -51,7 +60,13 @@ FILE_TEXTURE_DIR		= textures/
 FILE_TEXTURE			= texture
 
 DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_HOOKS_DIR) $(FILE_PLAYER_DIR) $(FILE_MATH_DIR) $(FILE_RENDER_DIR) $(FILE_COLORS_DIR) $(FILE_UTILS_DIR) $(FILE_FORM_DIR) $(FILE_TEXTURE_DIR)
+DIR_LIST				= $(FILE_PARSER_DIR)\
+							$(FILE_RAYCASTING_DIR)\
+							$(FILE_GARBAGE_COLLECTOR_DIR)\
+							$(FILE_TEXTURE_DIR)\
+							$(FILE_MAP_DIR)
 
+SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COLLECTOR_DIR), $(FILE_GARBAGE_COLLECTOR))
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
 SRC_FILES			+= $(addprefix $(FILE_HOOKS_DIR), $(FILE_HOOKS))
@@ -62,6 +77,8 @@ SRC_FILES			+= $(addprefix $(FILE_COLORS_DIR), $(FILE_COLORS))
 SRC_FILES			+= $(addprefix $(FILE_UTILS_DIR), $(FILE_UTILS))
 SRC_FILES			+= $(addprefix $(FILE_FORM_DIR), $(FILE_FORM))
 SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
+SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
+SRC_FILES			+= $(addprefix $(FILE_MAP_DIR), $(FILE_MAP))
 
 #-------- LIBS --------#
 

@@ -3,46 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 18:13:24 by atresall          #+#    #+#             */
-/*   Updated: 2023/11/24 11:19:42 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/02 09:45:21 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	verif_input(unsigned long long n)
+int	verif(long long nb)
 {
-	if (n > ULLONG_MAX)
+	if (nb > INT_MAX)
 		return (-1);
-	if (n < ULLONG_MAX)
+	else if (nb < INT_MIN)
 		return (0);
-	return (n);
+	else
+		return ((int)nb);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
-	unsigned long long	nb;
-	size_t				i;
-	int					sign;
+	int			i;
+	long long	nb;
+	int			sign;
 
-	nb = 0;
 	i = 0;
+	nb = 0;
 	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = sign * -1;
+		if (nptr[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		nb = nb * 10 + (str[i] - '0');
+		nb = nb * 10 + nptr[i] - '0';
 		i++;
 	}
-	nb = sign * nb;
-	return (verif_input(nb));
+	nb *= sign;
+	return (verif(nb));
 }
