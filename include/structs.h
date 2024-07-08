@@ -17,7 +17,16 @@ typedef struct s_vector_f
 	float y;
 } t_vector_f;
 
-// RAYCASTING STRUCTS
+
+/***
+ *    ██████╗  █████╗ ██╗   ██╗ ██████╗ █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗
+ *    ██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝
+ *    ██████╔╝███████║ ╚████╔╝ ██║     ███████║███████╗   ██║   ██║██╔██╗ ██║██║  ███╗
+ *    ██╔══██╗██╔══██║  ╚██╔╝  ██║     ██╔══██║╚════██║   ██║   ██║██║╚██╗██║██║   ██║
+ *    ██║  ██║██║  ██║   ██║   ╚██████╗██║  ██║███████║   ██║   ██║██║ ╚████║╚██████╔╝
+ *    ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
+ *
+ */
 
 typedef struct s_mlx {
 	void 		*mlx;
@@ -94,5 +103,45 @@ typedef struct s_cub {
 
 	int rays_nb;
 } t_cub;
+
+
+/***
+ *    ██████╗  █████╗ ██████╗ ███████╗██╗███╗   ██╗ ██████╗
+ *    ██╔══██╗██╔══██╗██╔══██╗██╔════╝██║████╗  ██║██╔════╝
+ *    ██████╔╝███████║██████╔╝███████╗██║██╔██╗ ██║██║  ███╗
+ *    ██╔═══╝ ██╔══██║██╔══██╗╚════██║██║██║╚██╗██║██║   ██║
+ *    ██║     ██║  ██║██║  ██║███████║██║██║ ╚████║╚██████╔╝
+ *    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝
+ *
+ */
+
+
+typedef struct s_color
+{
+	unsigned int r_ceiling;
+	unsigned int g_ceiling;
+	unsigned int b_ceiling;
+	unsigned int r_floor;
+	unsigned int g_floor;
+	unsigned int b_floor;
+	int floor;
+	int ceiling;
+} t_color;
+
+typedef struct s_pcub
+{
+	t_color *color;
+	char *notexture;
+	char *sotexture;
+	char *wetexture;
+	char *eatexture;
+	char **map;
+	int x_max_size;
+	int y_max_size;
+	int filefd;
+	int countorder;
+	int linetexture;
+	int linemap;
+} t_pcub;
 
 #endif //CUBE3D_STRUCTS_H

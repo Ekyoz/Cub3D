@@ -58,7 +58,7 @@ int init_input(t_mouse *mouse, t_keyboard *keyboard, void *win)
 	return 0;
 }
 
-int init_texture(t_cub *cub)
+int initr_texture(t_cub *cub)
 {
 	cub->map.walls[0] = load_texture(cub, cub->map.NO);
 	cub->map.walls[1] = load_texture(cub, cub->map.SO);

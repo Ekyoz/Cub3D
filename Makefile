@@ -16,12 +16,16 @@ NAME				= "cube3d"
 
 #-------- FILES --------#
 
-HEADER_FILES			= cube3d structs define
+HEADER_FILES			= cube3d structs define error_messages
 SRC_FILES		    	= main init loop
 TEST_FILES  			=
 
-FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
-FILE_GARBAGE_COLLECTOR 		    = free_functions
+#----- GARBAGE COLECTOR -----#
+
+FILE_GARBAGE_COL_DIR 	= garbage_collector/
+FILE_GARBAGE_COL 		= free_functions
+
+#----- PARSING ------#
 
 FILE_PARSER_DIR 	    = parser/
 FILE_PARSER 		    = parser utils struct
@@ -29,14 +33,19 @@ FILE_PARSER 		    = parser utils struct
 FILE_MAP_DIR			= parser/map/
 FILE_MAP				= map map_utils check_line map_wall map_length
 
-FILE_TEXTURE_DIR		= parser/texture/
-FILE_TEXTURE			= texture texture_utils face_color_texture color_utils
+FILE_TEXTURE_PARS_DIR	= parser/texture/
+FILE_TEXTURE_PARS		= texture texture_utils face_color_texture color_utils
+
+#----- RAYCASTING -----#
 
 FILE_RAYCASTING_DIR		= raycasting/
 FILE_RAYCASTING			= create_rays rays_collisions dda
 
 FILE_RENDER_DIR			= render/
 FILE_RENDER				= floor_celling rays_render bresenham minimap
+
+FILE_TEXTURE_DIR		= textures/
+FILE_TEXTURE			= texture
 
 FILE_HOOKS_DIR			= hooks/
 FILE_HOOKS				= keyboard mouse
@@ -47,6 +56,8 @@ FILE_PLAYER				= player move rotate
 FILE_COLORS_DIR			= colors/
 FILE_COLORS				= lerp rgb
 
+#------ UTILS ------#
+
 FILE_MATH_DIR			= maths/
 FILE_MATH				= vectors deg_rad direction others
 
@@ -56,17 +67,15 @@ FILE_UTILS				= utils
 FILE_FORM_DIR			= form/
 FILE_FORM				= circle rectangle triangle
 
-FILE_TEXTURE_DIR		= textures/
-FILE_TEXTURE			= texture
 
-DIR_LIST				= $(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) $(FILE_HOOKS_DIR) $(FILE_PLAYER_DIR) $(FILE_MATH_DIR) $(FILE_RENDER_DIR) $(FILE_COLORS_DIR) $(FILE_UTILS_DIR) $(FILE_FORM_DIR) $(FILE_TEXTURE_DIR)
-DIR_LIST				= $(FILE_PARSER_DIR)\
-							$(FILE_RAYCASTING_DIR)\
-							$(FILE_GARBAGE_COLLECTOR_DIR)\
-							$(FILE_TEXTURE_DIR)\
-							$(FILE_MAP_DIR)
+DIR_LIST				= 	$(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) \
+							$(FILE_HOOKS_DIR) $(FILE_PLAYER_DIR) $(FILE_MATH_DIR) \
+							$(FILE_RENDER_DIR) $(FILE_COLORS_DIR) \
+							$(FILE_UTILS_DIR) $(FILE_FORM_DIR) $(FILE_TEXTURE_DIR) \
+							$(FILE_PARSER_DIR) $(FILE_MAP_DIR) $(FILE_TEXTURE_PARS_DIR) \
+							$(FILE_GARBAGE_COL_DIR)
 
-SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COLLECTOR_DIR), $(FILE_GARBAGE_COLLECTOR))
+SRC_FILES			+= $(addprefix $(FILE_GARBAGE_COL_DIR), $(FILE_GARBAGE_COL))
 SRC_FILES			+= $(addprefix $(FILE_PARSER_DIR), $(FILE_PARSER))
 SRC_FILES			+= $(addprefix $(FILE_RAYCASTING_DIR), $(FILE_RAYCASTING))
 SRC_FILES			+= $(addprefix $(FILE_HOOKS_DIR), $(FILE_HOOKS))
@@ -77,7 +86,7 @@ SRC_FILES			+= $(addprefix $(FILE_COLORS_DIR), $(FILE_COLORS))
 SRC_FILES			+= $(addprefix $(FILE_UTILS_DIR), $(FILE_UTILS))
 SRC_FILES			+= $(addprefix $(FILE_FORM_DIR), $(FILE_FORM))
 SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
-SRC_FILES			+= $(addprefix $(FILE_TEXTURE_DIR), $(FILE_TEXTURE))
+SRC_FILES			+= $(addprefix $(FILE_TEXTURE_PARS_DIR), $(FILE_TEXTURE_PARS))
 SRC_FILES			+= $(addprefix $(FILE_MAP_DIR), $(FILE_MAP))
 
 #-------- LIBS --------#

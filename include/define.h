@@ -7,8 +7,11 @@
 # include <math.h>
 # include <time.h>
 # include <fcntl.h>
+#include <stdbool.h>
 #include "mlx.h"
 #include "libft.h"
+#include "get_next_line.h"
+#include "error_messages.h"
 
 // WINDOWS SETTINGS
 

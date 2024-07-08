@@ -12,8 +12,7 @@
 
 #include "cube3d.h"
 
-int init_tab(t_map *map)
-{
+int init_tab(t_map *map) {
 	// Setting initial tab dimensions
 	map->height = 20;
 	map->width = 20;
@@ -22,26 +21,24 @@ int init_tab(t_map *map)
 	if (map->map == NULL) // Checking allocation error
 		return (1);
 
-	for (int y = 0; y < map->height; y++)
-	{
+	for (int y = 0; y < map->height; y++) {
 		map->map[y] = malloc(sizeof(char) * map->width);
 		if (map->map[y] == NULL) // Checking allocation error
 			return (1);
 
 		// Putting values in tab
-		for (int x = 0; x < map->width; x++)
-		{
-			if (y == 0 || y == map->height - 1 || x == 0 || x == map->width - 1)
-			{
+		for (int x = 0; x < map->width; x++) {
+			if (y == 0 || y == map->height - 1 || x == 0 ||
+				x == map->width - 1) {
 				map->map[y][x] = '1'; // Setting the borders to 1
-			}
-			else
-			{
+			} else {
 				map->map[y][x] = '0'; // Setting the inner cells to 0
 			}
 		}
 	}
 	return (0);
+}
+
 int ft_strlen1(char *str, t_pcub *cub)
 {
 	int	i;
@@ -59,6 +56,7 @@ int ft_strlen1(char *str, t_pcub *cub)
     }
 	return (i);
 }
+
 static void print_map_struct(t_map *map)
 {
     printf("\n\n =======TEXTURE========\n\n");
@@ -76,21 +74,18 @@ static void print_map_struct(t_map *map)
     }
 }
 
-int main(int argc, char **argv) {
 
-    t_pcub *cub;
-    t_map *map;
-    cub = init_cub();
-    parse_map(cub, argc, argv);
-    map = init_map(cub);
-    put_cub_in_map(&cub, map);
-    print_map_struct(map);
-    free_map(&map);
-    return 0;
-}
-
-int main()
+int main(int argc, char *argv[])
 {
+	t_pcub *p_cub;
+	t_map *map;
+	p_cub = init_cub();
+	parse_map(p_cub, argc, argv);
+	map = init_map(p_cub);
+	put_cub_in_map(&p_cub, map);
+	print_map_struct(map);
+	free_map(&map);
+
 	t_cub cub;
 
 	init_tab(&cub.map);
@@ -117,7 +112,7 @@ int main()
 		exit(1);
 	if (init_input(&cub.mouse, &cub.keyboard, cub.mlx.win) == 1)
 		exit(1);
-	if (init_texture(&cub) == 1)
+	if (initr_texture(&cub) == 1)
 		exit(1);
 
 	loop(&cub);
