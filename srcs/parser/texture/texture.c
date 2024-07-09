@@ -116,7 +116,6 @@ static void countline_texture(t_pcub *cub)
     //     str = get_next_line(cub->filefd);
     // }
     free(str);
-    printf("le nombre de ligne de texture est %d\n", cub->linetexture);
     if(cub->linetexture == 0)
         print_free_exit(EMPTY_FILE, cub);
 }

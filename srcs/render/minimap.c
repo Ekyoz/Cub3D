@@ -20,7 +20,7 @@ void render_map(t_cub *cub)
 	t_vector_d tl = create_d_vect(center.x - size_map/2, center.y - size_map/2);
 	t_vector_d br = create_d_vect(center.x + size_map/2, center.y + size_map/2);
 
-	draw_rounded_rect_filled_color(cub, tl, br, 10, DARK_GRAY);
+	draw_rect_filled_color(cub, tl, br, DARK_GRAY);
 
 	// Taille d'une tuile sur la minimap
 	double tile_size = (double)size_map / MAP_ZOOM;
@@ -66,7 +66,7 @@ void render_map(t_cub *cub)
 			}
 		}
 	}
-	draw_rounded_rect_color(cub, tl, br, 5, BLACK);
+
 
 	double angle = atan2(cub->player.dir.y, cub->player.dir.x) + M_PI / 2;
 
@@ -85,10 +85,14 @@ void render_map(t_cub *cub)
 	draw_triangle_color(cub, rotated_player, RED);
 
 //
+	char *x_pos = ft_itoa((int)cub->player.pos.x);
+	char *y_pos = ft_itoa((int)cub->player.pos.y);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->mlx.img, 0, 0);
 	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x - 20, center.y + size_map / 2 + 30, WHITE, "Minimap");
 	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x - 65, center.y + size_map / 2 + 50, WHITE, "Pos: x: ");
-	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x - 10, center.y + size_map / 2 + 50, WHITE, ft_itoa((int)cub->player.pos.x));
+	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x - 10, center.y + size_map / 2 + 50, WHITE, x_pos);
 	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x + 25, center.y + size_map / 2 + 50, WHITE, "y: ");
-	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x + 45, center.y + size_map / 2 + 50, WHITE, ft_itoa((int)cub->player.pos.y));
+	mlx_string_put(cub->mlx.mlx, cub->mlx.win, center.x + 45, center.y + size_map / 2 + 50, WHITE, y_pos);
+	free(x_pos);
+	free(y_pos);
 }

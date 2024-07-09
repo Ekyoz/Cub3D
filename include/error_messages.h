@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//DIVERS
+// DIVERS
 #define ERROR_NO_MAP "No map or to much argument"
 #define ERROR_MALLOC_INIT "Malloc error during initialisation"
 #define ERROR_ARG "No map or to much argument"
@@ -31,7 +31,7 @@
 #define TREE_COLOR "Wrong RGB color"
 #define COLOR_NUMBER "Wrong color number"
 
-//MAP
+// MAP
 #define NO_MAP "No map"
 #define EMPTY_LINE_END "Empty line at the end of the map"
 #define MAP_NOT_CLOSED "Map is not closed"

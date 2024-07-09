@@ -12,7 +12,7 @@
 
 #-------- NAME --------#
 PROJECT_NAME		= "Cube 3D"
-NAME				= "cube3d"
+NAME				= "cub3d"
 
 #-------- FILES --------#
 
@@ -23,7 +23,7 @@ TEST_FILES  			=
 #----- GARBAGE COLECTOR -----#
 
 FILE_GARBAGE_COL_DIR 	= garbage_collector/
-FILE_GARBAGE_COL 		= free_functions
+FILE_GARBAGE_COL 		= free_functions close
 
 #----- PARSING ------#
 
@@ -65,7 +65,7 @@ FILE_UTILS_DIR			= utils/
 FILE_UTILS				= utils
 
 FILE_FORM_DIR			= form/
-FILE_FORM				= circle rectangle triangle
+FILE_FORM				= circle rectangle triangle triangle_points
 
 
 DIR_LIST				= 	$(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) \
@@ -91,14 +91,24 @@ SRC_FILES			+= $(addprefix $(FILE_MAP_DIR), $(FILE_MAP))
 
 #-------- LIBS --------#
 
+UNAME_S := $(shell uname -s)
+
 LIBFT_DIR			= $(INCLUDE_DIR)/LibFT
 LIBFT_ARCHIVE		= $(LIBFT_DIR)/libft.a
 
 GNL_DIR				= $(INCLUDE_DIR)/GNL
 GNL_ARCHIVE			= $(GNL_DIR)/libgnl.a
 
-MLX_DIR				= $(INCLUDE_DIR)/mlx-mac
+# Variables spécifiques au système
+ifeq ($(UNAME_S), Darwin)
+	MLX_DIR				= $(INCLUDE_DIR)/mlx-mac
+else ifeq ($(UNAME_S), Linux)
+	MLX_DIR				= $(INCLUDE_DIR)/mlx-linux
+else
+    $(error Unsupported OS: $(UNAME_S))
+endif
 MLX_ARCHIVE			= $(MLX_DIR)/libmlx.a
+
 
 LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR) $(MLX_DIR)
 LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE) $(MLX_ARCHIVE)
@@ -107,9 +117,16 @@ LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE) $(MLX_ARCHIVE
 CFLAGS 				= -Wall -Wextra -g3
 CFLAGS_DEBUG		= -Wall -Wextra -g3
 CFLAGS_TEST			= -g3
-INCLUDES			= -I$(MLX_DIR)
-LIBFLAGS			= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-VFALGS				= -s --leak-check=full --track-origins=yes --show-leak-kinds=all
+ifeq ($(UNAME_S), Darwin)
+	INCLUDES			= -I$(MLX_DIR)
+	LIBFLAGS			= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+else ifeq ($(UNAME_S), Linux)
+	INCLUDES			= -I$(MLX_DIR)
+    LIBFLAGS			= -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+else
+    $(error Unsupported OS: $(UNAME_S))
+endif
+VFALGS				= -s --leak-check=full --track-origins=yes #--show-leak-kinds=all
 
 #------------------------------------------------------------------------------#
 #----------------------------- DON'T TOUCH BELOW -----------------------------#
@@ -224,7 +241,7 @@ run: $(NAME)
             				fi
 
 valgrind: $(NAME)
-			valgrind $(VFALGS) ./$(RUN_NAME)
+			valgrind $(VFALGS) ./$(RUN_NAME) "./maps/testmap.cub"
 
 #------- DEBUG --------#
 

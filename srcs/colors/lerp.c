@@ -12,7 +12,6 @@
 
 #include "cube3d.h"
 
-
 int	ft_lerp_d(int min, int max, float timestamp)
 {
 	return ((max - min) * timestamp + min);
@@ -31,4 +30,3 @@ int	color_lerp(int color1, int color2, float timestamp)
 	b = ft_lerp_d(ft_get_b(color1), ft_get_b(color2), timestamp);
 	return (create_rgbt(r, g, b, 1));
 }
-

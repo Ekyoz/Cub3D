@@ -57,25 +57,6 @@ void free_cub(t_pcub **cub)
 	}
 }
 
-void free_map(t_map **map)
-{
-	if(*map)
-	{
-		if((*map)->map)
-			free_array(&(*map)->map);
-		if((*map)->textures.NO)
-			free((*map)->textures.NO);
-		if((*map)->textures.SO)
-			free((*map)->textures.SO);
-		if((*map)->textures.WE)
-			free((*map)->textures.WE);
-		if((*map)->textures.EA)
-			free((*map)->textures.EA);
-		free(*map);
-		*map = NULL;
-	}
-}
-
 void free_color(t_color **color)
 {
 	if(*color)

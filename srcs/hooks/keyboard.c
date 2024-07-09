@@ -12,19 +12,17 @@
 
 #include "cube3d.h"
 
-int key_press(int keycode, t_keyboard *keyboard)
+int key_press(int keycode, t_cub *cub)
 {
 	keycode = keycode % 200;
 	if (keycode < 200)
 	{
-		keyboard->prev_keyboard[keycode] = keyboard->keyboard[keycode];
-		keyboard->keyboard[keycode] = 1;
+		cub->keyboard.prev_keyboard[keycode] = cub->keyboard.keyboard[keycode];
+		cub->keyboard.keyboard[keycode] = 1;
 	}
 
-	if (keyboard->keyboard[KEY_ESC])
-	{
-		exit (0);
-	}
+	if (cub->keyboard.keyboard[KEY_ESC])
+		close_cub(cub);
 
 	return (0);
 }

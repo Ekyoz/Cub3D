@@ -1,12 +1,12 @@
 #include "mlx_int.h"
 
-int		mlx_mouse_move(t_xvar *xvar, t_win_list *win, int x, int y)
+int		mlx_mouse_move(void *mlx_ptr, void *win_ptr, t_xvar *xvar, t_win_list *win, int x, int y)
 {
 	XWarpPointer(xvar->display, None, win->window, 0, 0, 0, 0, x, y);
 	return (0);
 }
 
-int		mlx_mouse_hide(t_xvar *xvar, t_win_list *win)
+int		mlx_mouse_hide(void *mlx_ptr, void *win_ptr, t_xvar *xvar, t_win_list *win)
 {
 	static char data[1] = {0};
 	Cursor cursor;

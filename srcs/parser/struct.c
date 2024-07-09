@@ -50,22 +50,19 @@ static char** put_cubmap_in_map(t_pcub *cub)
     return map;
 }
 
-t_map *init_map(t_pcub *cub)
+t_map init_map()
 {
-    t_map *map;
+    t_map map;
 
-    map = malloc(sizeof(t_map));
-    if(!map)
-        print_free_exit(ERROR_MALLOC_INIT, cub);
-    map->map = NULL;
-    map ->width = 0;
-    map->height = 0;
-    map->textures.NO = NULL;
-    map->textures.SO = NULL;
-    map->textures.WE = NULL;
-    map->textures.EA = NULL;
-    map->textures.floor = 0;
-    map->textures.ceiling = 0;
+    map.map = NULL;
+    map.width = 0;
+    map.height = 0;
+    map.textures.no = NULL;
+    map.textures.so = NULL;
+    map.textures.we = NULL;
+    map.textures.ea = NULL;
+    map.textures.floor = 0;
+    map.textures.ceiling = 0;
     return(map);
 }
 
@@ -97,10 +94,10 @@ void put_cub_in_map(t_pcub **cub, t_map *map)
     map->map = put_cubmap_in_map((*cub));
     map->width = (*cub)->x_max_size;
     map->height = (*cub)->y_max_size;
-    map->textures.NO = ft_strdup((*cub)->notexture);
-    map->textures.SO = ft_strdup((*cub)->sotexture);
-    map->textures.WE = ft_strdup((*cub)->wetexture);
-    map->textures.EA = ft_strdup((*cub)->eatexture);
+    map->textures.no = ft_strdup((*cub)->notexture);
+    map->textures.so = ft_strdup((*cub)->sotexture);
+    map->textures.we = ft_strdup((*cub)->wetexture);
+    map->textures.ea = ft_strdup((*cub)->eatexture);
     map->textures.floor = (*cub)->color->floor;
     map->textures.ceiling = (*cub)->color->ceiling;
     free_cub(cub);

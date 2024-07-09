@@ -1,43 +1,55 @@
-#ifndef CUBE3D_DEFINE_H
-#define CUBE3D_DEFINE_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   define.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/08 14:19:40 by alexandre         #+#    #+#             */
+/*   Updated: 2024/07/09 17:42:47 by alexandre        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <math.h>
-# include <time.h>
+#ifndef DEFINE_H
+# define DEFINE_H
+
+# include "error_messages.h"
+# include "get_next_line.h"
+# include "libft.h"
+# include "mlx.h"
 # include <fcntl.h>
-#include <stdbool.h>
-#include "mlx.h"
-#include "libft.h"
-#include "get_next_line.h"
-#include "error_messages.h"
+# include <math.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <time.h>
+# include <unistd.h>
 
 // WINDOWS SETTINGS
 
-#define WIDTH 1440
-#define HEIGHT 900
+# define WIDTH 1440
+# define HEIGHT 900
 
 // MAP SETTINGS
-#define TILE_SIZE 40
-#define MAP_ZOOM 8
-#define SIZE_MAP 5
+# define TILE_SIZE 40
+# define MAP_ZOOM 8
+# define SIZE_MAP 5
 
 // VIEW SETTINGS
-#define FOV 66
-#define VIEW_DIST 800
+# define FOV 66
+# define VIEW_DIST 800
 
 // SPEED
-#define MOVE_SPEED 2
-#define ROT_SPEED_KEY 0.045f
-#define ROT_SPEED_MOUSE 900.0f
+# define MOVE_SPEED 2
+# define ROT_SPEED_KEY 0.045f
+# define ROT_SPEED_MOUSE 900.0f
 
 // MATHS
-# define PI		3.14
-# define PI_2	1.57
-# define PI_3	1.047
-# define PI_4	0.785
-# define PI_6	0.523
+# define PI 3.14
+# define PI_2 1.57
+# define PI_3 1.047
+# define PI_4 0.785
+# define PI_6 0.523
 
 // MLX Colors
 # define WHITE 0x00FFFFFF
@@ -52,7 +64,39 @@
 # define PINK 0x00DD88BB
 # define LIGHT_BLUE 0x00AAAAFF
 
-// KEYS
+// KEYS LINUX
+//# define LMB 1
+//# define RMB 3
+//# define MOUSE_UP 4
+//# define MOUSE_DOWN 5
+//# define KEY_C 98
+//# define KEY_V 99
+//# define KEY_B 118
+//# define KEY_Q 113
+//# define KEY_R 114
+//# define KEY_O 111
+//# define KEY_P 112
+//# define KEY_E 101
+//# define KEY_ESC 65307 % 200
+//# define KEY_UP 65362 % 200
+//# define KEY_DOWN 65364 % 200
+//# define KEY_LEFT 65361 % 200
+//# define KEY_RIGHT 65363 % 200
+//# define KEY_W 119 % 200
+//# define KEY_S 115 % 200
+//# define KEY_A 97 % 200
+//# define KEY_D 100 % 200
+//# define KEY_1 836 % 200
+//# define KEY_2 49 % 200
+//# define KEY_3 50 % 200
+//# define KEY_4 51 % 200
+//# define KEY_5 52 % 200
+//# define KEY_6 53 % 200
+//# define KEY_7 54 % 200
+//# define KEY_8 55 % 200
+//# define KEY_TAB 65289 % 200
+
+// KEY MAC
 # define MOUSE_UP 4
 # define MOUSE_DOWN 5
 # define MOUSE_WHELL 3
@@ -85,4 +129,4 @@
 # define KEY_PLUS 69
 # define KEY_MINUS 78
 
-#endif //CUBE3D_DEFINE_H
+#endif
