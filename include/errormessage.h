@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:39:44 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/05 16:04:13 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/07 16:39:12 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@
 #define TOO_MANY_PLAYER "To much player"
 #define OPEN_MAP "Map is not closed"
 #define MAP_TOO_BIG "Map is too big"
+#define WRONG_CARACTER_MAP "Wrong caracter inside map"
