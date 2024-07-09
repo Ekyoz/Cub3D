@@ -1,4 +1,4 @@
 #ifndef CUBE3D_STRUCTS_H
-#define CUBE3D_STRUCTS_H
+# define CUBE3D_STRUCTS_H
 
-#endif //CUBE3D_STRUCTS_H
+#endif // CUBE3D_STRUCTS_H

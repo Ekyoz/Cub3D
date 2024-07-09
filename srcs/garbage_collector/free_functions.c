@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/05 15:44:02 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/09 17:11:23 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,64 +31,64 @@ void	free_array(char ***ptr)
 	}
 }
 
-void free_cub(t_pcub **cub)
+void	free_cub(t_pcub **cub)
 {
-	if(*cub)
+	if (*cub)
 	{
-		if((*cub)->color)
+		if ((*cub)->color)
 			free_color(&(*cub)->color);
-		if((*cub)->notexture)
+		if ((*cub)->notexture)
 			free((*cub)->notexture);
-		if((*cub)->sotexture)
+		if ((*cub)->sotexture)
 			free((*cub)->sotexture);
-		if((*cub)->eatexture)
+		if ((*cub)->eatexture)
 			free((*cub)->eatexture);
-		if((*cub)->wetexture)
+		if ((*cub)->wetexture)
 			free((*cub)->wetexture);
-		if((*cub)->map)
+		if ((*cub)->map)
 			free_array(&(*cub)->map);
-		if((*cub)->filefd != -1)
+		if ((*cub)->filefd != -1)
 		{
 			close((*cub)->filefd);
-    		(*cub)->filefd = -1;
+			(*cub)->filefd = -1;
 		}
 		free(*cub);
 		*cub = NULL;
 	}
 }
 
-void free_map(t_map **map)
+void	free_map(t_map **map)
 {
-	if(*map)
+	if (*map)
 	{
-		if((*map)->map)
+		if ((*map)->map)
 			free_array(&(*map)->map);
-		if((*map)->NO)
-			free((*map)->NO);
-		if((*map)->SO)
-			free((*map)->SO);
-		if((*map)->WE)
-			free((*map)->WE);
-		if((*map)->EA)
-			free((*map)->EA);	
+		if ((*map)->no)
+			free((*map)->no);
+		if ((*map)->so)
+			free((*map)->so);
+		if ((*map)->we)
+			free((*map)->we);
+		if ((*map)->ea)
+			free((*map)->ea);
 		free(*map);
 		*map = NULL;
 	}
 }
 
-void free_color(t_color **color)
+void	free_color(t_color **color)
 {
-	if(*color)
+	if (*color)
 	{
 		free(*color);
 		*color = NULL;
 	}
 }
 
-void print_free_exit(char *str, t_pcub *cub)
+void	print_free_exit(char *errormessage, t_pcub *cub)
 {
-	if(str)
-        printf("\n\n\033[31m==%s==\033[0m\n\n",str);
-    free_cub(&cub);
-    exit(1);
+	if (errormessage)
+		printf("\n\n\033[31m==%s==\033[0m\n\n", errormessage);
+	free_cub(&cub);
+	exit(1);
 }

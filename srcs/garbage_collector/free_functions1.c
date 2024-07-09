@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_length.c                                       :+:      :+:    :+:   */
+/*   free_functions1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/03 23:32:34 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/09 16:58:43 by bastpoy          ###   ########.fr       */
+/*   Created: 2024/07/09 16:14:41 by bastpoy           #+#    #+#             */
+/*   Updated: 2024/07/09 16:23:13 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static void	get_maxsize_x(t_pcub *cub)
+void	print_free_str_exit(char *errormessage, char *str, t_pcub *cub)
 {
-	int	i;
-
-	i = 0;
-	while (cub->map[i])
-	{
-		if (ft_strlen1(cub->map[i], cub) > cub->x_max_size)
-			cub->x_max_size = ft_strlen1(cub->map[i], cub);
-		i++;
-	}
-}
-
-static void	get_maxsize_y(t_pcub *cub)
-{
-	int	i;
-
-	i = 0;
-	while (cub->map[i])
-	{
-		i++;
-	}
-	cub->y_max_size = i;
-}
-
-void	get_xy_maxsize(t_pcub *cub)
-{
-	get_maxsize_x(cub);
-	get_maxsize_y(cub);
+	if (errormessage)
+		printf("\n\n\033[31m==%s==\033[0m\n\n", errormessage);
+	if (str)
+		free(str);
+	free_cub(&cub);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 #    By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/07/04 15:41:28 by bastpoy          ###   ########.fr        #
+#    Updated: 2024/07/09 16:19:21 by bastpoy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC_FILES		    	= main
 TEST_FILES  			=
 
 FILE_GARBAGE_COLLECTOR_DIR 	    = garbage_collector/
-FILE_GARBAGE_COLLECTOR 		    = free_functions
+FILE_GARBAGE_COLLECTOR 		    = free_functions free_functions1
 
 FILE_PARSER_DIR 	    = parser/
 FILE_PARSER 		    = parser utils struct

@@ -6,11 +6,11 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:39:44 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/07 16:39:12 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/09 15:48:51 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//DIVERS
+// DIVERS
 #define ERROR_NO_MAP "No map or to much argument"
 #define ERROR_MALLOC_INIT "Malloc error during initialisation"
 #define ERROR_ARG "No map or to much argument"
@@ -22,8 +22,9 @@
 #define NO_NAME_TEXTURE "No name texture"
 #define TEXTURE_PROBLEM "Texture problem"
 #define ERROR_TEXTURE_EXT "Error with texture file"
-#define WRONG_ORDER "Wrong order"
+#define TEXTURE_NUMBER "Wrong number of textures"
 #define WRONG_EXTENSION "Wrong extension of texture"
+#define MULTI_TEXTURE "Multiple texture"
 
 // COLOR
 #define BAD_COLOR "Bad color"
@@ -31,7 +32,7 @@
 #define TREE_COLOR "Wrong RGB color"
 #define COLOR_NUMBER "Wrong color number"
 
-//MAP
+// MAP
 #define NO_MAP "No map"
 #define EMPTY_LINE_END "Empty line at the end of the map"
 #define MAP_NOT_CLOSED "Map is not closed"
