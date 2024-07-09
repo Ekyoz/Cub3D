@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/05 17:28:18 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/09 14:26:57 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,13 @@ static void countline_texture(t_pcub *cub)
         free(str);
         str = get_next_line(cub->filefd);
     }
-    while(str)
-    {
-        free(str);
-        str = get_next_line(cub->filefd);
-    }
+    // while(str)
+    // {
+    //     free(str);
+    //     str = get_next_line(cub->filefd);
+    // }
     free(str);
+    printf("le nombre de ligne de texture est %d\n", cub->linetexture);
     if(cub->linetexture == 0)
         print_free_exit(EMPTY_FILE, cub);
 }

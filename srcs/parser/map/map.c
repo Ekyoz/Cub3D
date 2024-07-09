@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:02:07 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/04 16:03:27 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/09 14:42:02 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void check_carac_map(t_pcub *cub)
 				&& cub->map[i][j] != 'E' && cub->map[i][j] != 'W'
 				&& cub->map[i][j] != 'D' && cub->map[i][j] != '2'
 				&& cub->map[i][j] != '4')
-                    print_free_exit(EMPTY_LINE_END, cub);
+                    print_free_exit(WRONG_CARACTER_MAP, cub);
             j++;
         }
         i++;

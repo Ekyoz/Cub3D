@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:46:21 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/05 16:01:26 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/09 14:42:11 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void is_valid_color(char *str, t_pcub *cub)
             i++;
         else
         {
-            printf("la valeur %c\n", str[i]);
             free(str);
             print_free_exit(BAD_COLOR, cub);
         }
