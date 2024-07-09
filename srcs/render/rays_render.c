@@ -32,25 +32,29 @@ void	rays_render(t_cub *cub)
 	double 		step;
 	t_vector_d 	top_left;
 	t_vector_d 	bot_right;
-	t_texture 	*texture;
+	t_sprite 	*sprite;
 
 	for (int i = 0; i < cub->rays_nb; ++i) {
 		t_ray *ray = &cub->rays[i];
 		
 		if (ray->perp_length == -1)
 			continue;
-		
+
+		ray->perp_length *= VIEW_DIST * 0.00125;
+
 		slice_height = (float)(HEIGHT / ray->perp_length);
-		
 
 		top_left = create_d_vect(i * slice_width, (HEIGHT / 2 + cub->mouse.move.y) - (int)slice_height / 2);
 		bot_right = create_d_vect(i * slice_width + slice_width,( HEIGHT / 2 + cub->mouse.move.y) + (int)slice_height / 2);
 		color_timestamp = (slice_height - 10.0f) / (100.0f - 10.0f);
 
-		texture = &cub->map.walls[ray->side_hit];
-		tex_x = get_tex_x(cub, ray, texture);
+		if (cub->map.map[ray->cell.y][ray->cell.x] == '2' || cub->map.map[ray->cell.y][ray->cell.x] == '4')
+			sprite = &cub->map.textures.door;
+		else
+			sprite = &cub->map.textures.walls[ray->side_hit];
+		tex_x = get_tex_x(cub, ray, sprite);
 		tex_y = 0;
-		step = texture->height / slice_height;
+		step = sprite->height / slice_height;
 
 		for (int y = top_left.y; y < bot_right.y; y++) {
 			if (y < 0)
@@ -62,15 +66,7 @@ void	rays_render(t_cub *cub)
 				break;
 			if (y >= 0 && y < HEIGHT)
 			{
-//				if (ray->side_hit == 0)
-//					color = RED;
-//				else if (ray->side_hit == 1)
-//					color = BLUE;
-//				else if (ray->side_hit == 2)
-//					color = YELLOW;
-//				else
-//					color = GREEN;
-				color = get_text_pixel(texture, tex_x, tex_y);
+				color = get_text_pixel(sprite, tex_x, tex_y);
 				if (color_timestamp <= 0.98f)
 					color = color_lerp(BLACK, color, color_timestamp);
 				for (int x = top_left.x; x < bot_right.x; x++)

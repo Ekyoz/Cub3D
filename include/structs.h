@@ -38,7 +38,7 @@ typedef struct s_mlx {
 	int			endian;
 } t_mlx;
 
-typedef struct s_texture{
+typedef struct s_sprite{
 	void *texture;
 	char *addr;
 	int width;
@@ -46,20 +46,26 @@ typedef struct s_texture{
 	int bits_per_pixel;
 	int line_length;
 	int endian;
-} t_texture;
+} t_sprite;
+
+typedef struct s_textures{
+	char *NO;
+	char *SO;
+	char *WE;
+	char *EA;
+	char *DO;
+	t_sprite walls[4];
+	t_sprite door;
+	int floor;
+	int ceiling;
+} t_textures;
 
 typedef struct s_map{
 	char **map;
 	int width;
 	int height;
 
-	char *NO;
-	char *SO;
-	char *WE;
-	char *EA;
-	t_texture walls[4];
-	int floor;
-	int ceiling;
+	t_textures textures;
 } t_map;
 
 typedef struct s_player
@@ -67,7 +73,7 @@ typedef struct s_player
 	t_vector_f pos;
 	t_vector_f dir;
 	t_vector_d view_dst_pos;
-	int		map;
+	bool		map;
 } t_player;
 
 typedef struct s_ray {

@@ -20,16 +20,17 @@
 
 // MAP SETTINGS
 #define TILE_SIZE 40
-#define MAP_RADIUS 200
+#define MAP_ZOOM 8
+#define SIZE_MAP 5
 
 // VIEW SETTINGS
-#define FOV 60
+#define FOV 66
 #define VIEW_DIST 800
 
 // SPEED
-#define MOVE_SPEED 3
+#define MOVE_SPEED 2
 #define ROT_SPEED_KEY 0.045f
-#define ROT_SPEED_MOUSE 1000.0f
+#define ROT_SPEED_MOUSE 900.0f
 
 // MATHS
 # define PI		3.14

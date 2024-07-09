@@ -106,6 +106,7 @@ int init_mlx(t_mlx *mlx);
 int init_rays(t_cub *cub);
 int init_input(t_mouse *mouse, t_keyboard *keyboard, void *win);
 int initr_texture(t_cub *cub);
+int init_player(t_cub *cub);
 
 // LOOP
 void loop(t_cub *cub);
@@ -115,7 +116,7 @@ void create_rays(t_cub *cub);
 t_vector_f dda(t_cub *cub, t_ray *ray);
 void rays_collisions(t_cub *cub);
 int is_in_map(t_cub *cub, t_vector_d pos);
-int		is_colliding_cell(t_cub *cub, float x, float y);
+int		is_colliding_cell(t_cub *cub, float x, float y, int plain_cell);
 
 //RENDER
 void my_mlx_pixel_put(t_mlx *mlx, int x, int y, int color);
@@ -131,9 +132,9 @@ void draw_rounded_rect_color(t_cub *data, t_vector_d top_left, t_vector_d bottom
 void render_map(t_cub *cub);
 
 // TEXTURE
-int	get_text_pixel(t_texture *text, int x, int y);
-int get_tex_x(t_cub *cub, t_ray *ray, t_texture *texture);
-t_texture load_texture(t_cub *cub, char *path);
+int	get_text_pixel(t_sprite *text, int x, int y);
+int get_tex_x(t_cub *cub, t_ray *ray, t_sprite *texture);
+t_sprite load_texture(t_cub *cub, char *path);
 
 // HOOKS
 int key_press(int keycode, t_keyboard *keyboard);
@@ -170,6 +171,7 @@ double	get_vector_f_length(t_vector_f start, t_vector_f end);
 t_vector_f	create_vect_f_from_origin(t_vector_f origin, double radian, double length);
 t_vector_d	create_vect_d_from_origin(t_vector_d origin, float radian, float length);
 t_vector_d create_d_vect(int x, int y);
+t_vector_f create_f_vect(float x, float y);
 void	set_vector_d(t_vector_d *vector, int x, int y);
 void	set_vector_f(t_vector_f *vector, float x, float y);
 t_vector_d	vector_d_lerp(t_vector_d start, t_vector_d end, float timestamp);
@@ -186,5 +188,8 @@ double get_direction(t_vector_d start, t_vector_d end);
 double get_direction_f(t_vector_f start, t_vector_f end);
 // Others
 float ft_abs_f(float nb);
+void	print_grid(t_cub *data);
+void  set_grid_cell(t_cub *cub, int x, int y);
+void clear_window(t_cub *data);
 
 #endif

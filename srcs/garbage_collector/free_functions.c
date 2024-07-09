@@ -63,14 +63,14 @@ void free_map(t_map **map)
 	{
 		if((*map)->map)
 			free_array(&(*map)->map);
-		if((*map)->NO)
-			free((*map)->NO);
-		if((*map)->SO)
-			free((*map)->SO);
-		if((*map)->WE)
-			free((*map)->WE);
-		if((*map)->EA)
-			free((*map)->EA);	
+		if((*map)->textures.NO)
+			free((*map)->textures.NO);
+		if((*map)->textures.SO)
+			free((*map)->textures.SO);
+		if((*map)->textures.WE)
+			free((*map)->textures.WE);
+		if((*map)->textures.EA)
+			free((*map)->textures.EA);
 		free(*map);
 		*map = NULL;
 	}

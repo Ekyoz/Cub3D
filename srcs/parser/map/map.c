@@ -76,7 +76,8 @@ void check_carac_map(t_pcub *cub)
 				&& cub->map[i][j] != 'N' && cub->map[i][j] != ' '
 				&& cub->map[i][j] != '\n' && cub->map[i][j] != 'S'
 				&& cub->map[i][j] != 'E' && cub->map[i][j] != 'W'
-				&& cub->map[i][j] != 'D')
+				&& cub->map[i][j] != 'D' && cub->map[i][j] != '2'
+				&& cub->map[i][j] != '4')
                     print_free_exit(EMPTY_LINE_END, cub);
             j++;
         }

@@ -60,12 +60,12 @@ t_map *init_map(t_pcub *cub)
     map->map = NULL;
     map ->width = 0;
     map->height = 0;
-    map->NO = NULL;
-    map->SO = NULL;
-    map->WE = NULL;
-    map->EA = NULL;
-    map->floor = 0;
-    map->ceiling = 0;
+    map->textures.NO = NULL;
+    map->textures.SO = NULL;
+    map->textures.WE = NULL;
+    map->textures.EA = NULL;
+    map->textures.floor = 0;
+    map->textures.ceiling = 0;
     return(map);
 }
 
@@ -97,11 +97,11 @@ void put_cub_in_map(t_pcub **cub, t_map *map)
     map->map = put_cubmap_in_map((*cub));
     map->width = (*cub)->x_max_size;
     map->height = (*cub)->y_max_size;
-    map->NO = ft_strdup((*cub)->notexture);
-    map->SO = ft_strdup((*cub)->sotexture);
-    map->WE = ft_strdup((*cub)->wetexture);
-    map->EA = ft_strdup((*cub)->eatexture);
-    map->floor = (*cub)->color->floor;
-    map->ceiling = (*cub)->color->ceiling;
+    map->textures.NO = ft_strdup((*cub)->notexture);
+    map->textures.SO = ft_strdup((*cub)->sotexture);
+    map->textures.WE = ft_strdup((*cub)->wetexture);
+    map->textures.EA = ft_strdup((*cub)->eatexture);
+    map->textures.floor = (*cub)->color->floor;
+    map->textures.ceiling = (*cub)->color->ceiling;
     free_cub(cub);
 }

@@ -77,7 +77,7 @@ t_vector_f dda(t_cub *cub, t_ray *ray)
 
 		ray_length = len_squared(vector_f_to_d(cub->player.pos), map);
 
-		if (is_colliding_cell(cub, (float)map.x, (float)map.y) == 1)
+		if (is_colliding_cell(cub, (float)map.x, (float)map.y, 0) == 1)
 		{
 			if (side_hit.y == 0)
 				ray->perp_length = (side_dist.x - delta_dist.x) * TILE_SIZE;
@@ -92,6 +92,8 @@ t_vector_f dda(t_cub *cub, t_ray *ray)
 				ray->side_hit = 0;
 			else
 				ray->side_hit = 2;
+
+			set_vector_d(&ray->cell, map.x / TILE_SIZE, map.y / TILE_SIZE);
 
 			return (vector_d_to_f(map));
 		}

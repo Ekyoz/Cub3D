@@ -22,11 +22,11 @@ void move_forward(t_cub *cub)
 			cub->player.dir.y * MOVE_SPEED
 	};
 
-	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x + coll_x(cub->player.dir), cub->player.pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x + coll_x(cub->player.dir), cub->player.pos.y, 1))
 		cub->player.pos.x += new_pos.x;
 
 	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y +
-			coll_y(cub->player.dir)))
+			coll_y(cub->player.dir), 1))
 		cub->player.pos.y += new_pos.y;
 }
 
@@ -37,10 +37,10 @@ void move_backward(t_cub *cub)
 			cub->player.dir.y * MOVE_SPEED
 	};
 
-	if (!is_colliding_cell(cub, cub->player.pos.x - new_pos.x - coll_x(cub->player.dir), cub->player.pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x - new_pos.x - coll_x(cub->player.dir), cub->player.pos.y, 1))
 		cub->player.pos.x -= new_pos.x;
 
-	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y - new_pos.y - coll_y(cub->player.dir)))
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y - new_pos.y - coll_y(cub->player.dir), 1))
 		cub->player.pos.y -= new_pos.y;
 }
 
@@ -56,10 +56,10 @@ void move_left(t_cub *cub)
 			new_dir.y * MOVE_SPEED
 	};
 
-	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y, 1))
 		cub->player.pos.x += new_pos.x;
 
-	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y, 1))
 		cub->player.pos.y += new_pos.y;
 }
 
@@ -75,10 +75,10 @@ void move_right(t_cub *cub)
 			new_dir.y * MOVE_SPEED
 	};
 
-	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x + new_pos.x, cub->player.pos.y, 1))
 		cub->player.pos.x += new_pos.x;
 
-	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y))
+	if (!is_colliding_cell(cub, cub->player.pos.x, cub->player.pos.y + new_pos.y, 1))
 		cub->player.pos.y += new_pos.y;
 }
 

@@ -24,14 +24,14 @@ void rays_collisions(t_cub *cub)
 		 {
 			 cub->rays[i].hit_point = dda_vec;
 			 cub->rays[i].length = get_vector_f_length(cub->player.pos, dda_vec);
-			 if (cub->player.map == 1)
+			 if (cub->player.map)
 				 bresenham(cub, vector_f_to_d(cub->player.pos), vector_f_to_d(dda_vec), WHITE);
 		 }
 		 else
 		 {
 			 cub->rays[i].perp_length = -1;
 			 cub->rays[i].hit_point = create_vect_f_from_origin(cub->player.pos, get_angle_f(cub->player.pos, cub->rays[i].hit_point), VIEW_DIST);
-			 if (cub->player.map == 1)
+			 if (cub->player.map)
 			 {
 				 t_vector_f ray_full_dst = create_vect_f_from_origin(
 						 cub->player.pos,

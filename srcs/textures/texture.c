@@ -12,7 +12,7 @@
 
 #include "cube3d.h"
 
-int get_tex_x(t_cub *cub, t_ray *ray, t_texture *texture)
+int get_tex_x(t_cub *cub, t_ray *ray, t_sprite *texture)
 {
 	// Calculating exact hit position
 	double perp_angle = PI_2 - ray->angle + get_angle_f(cub->player.pos, vector_d_to_f(cub->player.view_dst_pos));
@@ -36,7 +36,7 @@ int get_tex_x(t_cub *cub, t_ray *ray, t_texture *texture)
 	return (tex_x);
 }
 
-int get_text_pixel(t_texture *texture, int x, int y)
+int get_text_pixel(t_sprite *texture, int x, int y)
 {
 	int color;
 
@@ -46,24 +46,23 @@ int get_text_pixel(t_texture *texture, int x, int y)
 	if (y < 0 || y >= texture->height)
 		return (0);
 
-	color = (*(int *)texture->addr + (y * texture->line_length) + (x * texture->bits_per_pixel / 8));
+	char *pixel = texture->addr + (y * texture->line_length + x * (texture->bits_per_pixel / 8));
+	color = *(int *)pixel;
 	return (color);
 }
 
-t_texture load_texture(t_cub *cub, char *path)
+t_sprite load_texture(t_cub *cub, char *path)
 {
-	t_texture *texture;
-	t_texture result;
+	t_sprite *texture;
+	t_sprite result;
 
-	texture = (t_texture *) malloc(sizeof(t_texture));
+	texture = (t_sprite *) malloc(sizeof(t_sprite));
 	if (!texture)
 		exit(1);
 	texture->texture = mlx_xpm_file_to_image(cub->mlx.mlx, path, &texture->width, &texture->height);
 	if (!texture->texture)
 		exit(1);
 	texture->addr = mlx_get_data_addr(texture->texture, &texture->bits_per_pixel, &texture->line_length, &texture->endian);
-	if (texture->addr != NULL)
-		printf("text: %p\n", texture->addr);
 	result = *texture;
 	free(texture);
 	return result;

@@ -217,7 +217,11 @@ archive:	lib $(OBJ) $(HEADERS)
 			@rm -rf __.*
 
 run: $(NAME)
-			./$(RUN_NAME)
+			@if [ -z "$(ARG)" ]; then \
+            					./$(RUN_NAME); \
+            				else \
+            					./$(RUN_NAME) $(ARG); \
+            				fi
 
 valgrind: $(NAME)
 			valgrind $(VFALGS) ./$(RUN_NAME)

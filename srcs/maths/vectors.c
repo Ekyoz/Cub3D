@@ -79,6 +79,16 @@ t_vector_d create_d_vect(int x, int y)
 	return (vector);
 }
 
+t_vector_f create_f_vect(float x, float y)
+{
+	t_vector_f	vector;
+
+	vector.x = x;
+	vector.y = y;
+	return (vector);
+}
+
+
 void	set_vector_d(t_vector_d *vector, int x, int y)
 {
 	vector->x = x;

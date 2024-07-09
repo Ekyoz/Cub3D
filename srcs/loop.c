@@ -14,33 +14,6 @@
 
 static int update(t_cub *cub);
 
-void clear_window(t_cub *data)
-{
-	int total = WIDTH * HEIGHT;
-	int	size = data->mlx.bits_per_pixel / 8;
-
-	for (int i = 0; i < total; i++)
-	{
-		char *dst = data->mlx.addr + i * size;
-		*(unsigned int *)dst = DARK_GRAY;
-	}
-}
-
-void	print_grid(t_cub *data)
-{
-	// Walls
-	for (int y = 0; y < data->map.height; y++)
-	{
-		for (int x = 0; x < data->map.width; x++)
-		{
-			t_vector_d	top_left = {x * TILE_SIZE, y * TILE_SIZE};
-			t_vector_d	bot_right = {top_left.x + TILE_SIZE, top_left.y + TILE_SIZE};
-			if (data->map.map[y][x] == '1') // Walls
-				draw_rect_filled_color(data, top_left, bot_right, PINK);
-		}
-	}
-}
-
 void loop(t_cub *cub)
 {
 	mlx_hook(cub->mlx.win, 2, 1L << 0, key_press, &cub->keyboard);
@@ -54,28 +27,13 @@ void loop(t_cub *cub)
 	mlx_loop(cub->mlx.mlx);
 }
 
-void  set_grid_cell(t_cub *cub, int x, int y)
-{
-	t_vector_d tab_pos = {
-			x / TILE_SIZE, // x
-			y / TILE_SIZE // y
-	};
-
-	if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT)
-		return;
-
-	if (cub->mouse.button == LMB && cub->mouse.pressed == 1)
-		cub->map.map[tab_pos.y][tab_pos.x] = '1';
-	else if (cub->mouse.button == RMB && cub->mouse.pressed == 1)
-		cub->map.map[tab_pos.y][tab_pos.x] = '0';
-}
-
 static int update(t_cub *cub)
 {
 	player_input(cub, &cub->keyboard, &cub->mouse);
 
 	if (cub->player.map)
 	{
+		mlx_mouse_show();
 		clear_window(cub);
 		set_grid_cell(cub, cub->mouse.pos.x, cub->mouse.pos.y); // Set walls
 		print_grid(cub); // Show walls

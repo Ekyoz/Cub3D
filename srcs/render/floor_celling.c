@@ -23,7 +23,7 @@ void set_floor_cell(t_cub *cub)
 	while (++i < floor_start)
 	{
 		dst = cub->mlx.addr + i * size;
-		*(unsigned int *)dst = cub->map.ceiling;
+		*(unsigned int *)dst = cub->map.textures.ceiling;
 	}
 
 	i = floor_start - 1;
@@ -31,6 +31,6 @@ void set_floor_cell(t_cub *cub)
 	while (++i < total)
 	{
 		dst = cub->mlx.addr + i * size;
-		*(unsigned int *)dst = cub->map.floor;
+		*(unsigned int *)dst = cub->map.textures.floor;
 	}
 }
