@@ -126,7 +126,7 @@ else ifeq ($(UNAME_S), Linux)
 else
     $(error Unsupported OS: $(UNAME_S))
 endif
-VFALGS				= -s --leak-check=full --track-origins=yes #--show-leak-kinds=all
+VFALGS				= -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 
 #------------------------------------------------------------------------------#
 #----------------------------- DON'T TOUCH BELOW -----------------------------#

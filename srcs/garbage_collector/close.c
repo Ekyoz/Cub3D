@@ -46,6 +46,6 @@ int close_cub(t_cub *cub)
 	free(cub->rays);
 	mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
 	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
-//	mlx_destroy_display(cub->mlx.mlx);
+	mlx_destroy_display(cub->mlx.mlx);
 	exit(0);
 }

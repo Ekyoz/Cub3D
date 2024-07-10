@@ -4,7 +4,7 @@ WE ./assets/walls/blue_bricks.xpm
 EA ./assets/walls/grey_brick.xpm
 
 F 34,34,34
-C 225,30,200
+C 170,170,255
 
         1111111111111111111111111
         1000000000110000000000001

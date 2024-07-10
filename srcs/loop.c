@@ -31,7 +31,7 @@ static int	update(t_cub *cub)
 	player_input(cub, &cub->keyboard, &cub->mouse);
 	if (cub->player.map)
 	{
-		mlx_mouse_show(cub->mlx.win, cub->mlx.win);
+//		mlx_mouse_show(cub->mlx.win, cub->mlx.win);
 		clear_window(cub);
 		set_grid_cell(cub, cub->mouse.pos.x, cub->mouse.pos.y);
 		print_grid(cub);
