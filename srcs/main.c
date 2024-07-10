@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:57:32 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/09 17:10:43 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/10 18:45:28 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 	t_pcub	*cub;
 	t_map	*map;
 
+	printf("le raycasting dalex est nul\n");
 	cub = init_cub();
 	parse_map(cub, argc, argv);
 	map = init_map(cub);
