@@ -1,6 +1,6 @@
-NO ./texture/1.xpm   
+NO ./texture/1.xpm
 WE ./texture/3.xpm      
-SO    ./texture/2.xpm
+
 EA ./texture/4.xpm
 
 F 220,100,0
@@ -11,7 +11,8 @@ ouais gros
              
 papapap
 
-groddddd
+grodddd
+
         1111111111111111111111111
         1000000000110000000000001
         1011000001110000000000001
@@ -27,4 +28,4 @@ groddddd
 11110111 1110101 101111010001
 11111111 1111111 111111111111
         101
-        111
+        111  

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/09 17:08:12 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/10 18:32:04 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void	put_texture(t_pcub *cub)
 
 	i = 0;
 	str = get_next_line(cub->filefd);
+    printf("size %d %s\n", ft_strlen1(str, cub), str);
 	while (i < cub->linetexture)
 	{
 		j = 0;
@@ -67,6 +68,7 @@ static void	put_texture(t_pcub *cub)
 		str = get_next_line(cub->filefd);
 		i++;
 	}
+    printf("size %d %s\n", ft_strlen1(str, cub), str);
 	free(str);
 }
 
