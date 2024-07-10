@@ -46,11 +46,11 @@ void player_input(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 			rotate_right(&cub->player, -(float)mouse->move.x / ROT_SPEED_MOUSE);
 		if (mouse->move.x < 100)
 			rotate_left(&cub->player, (float)mouse->move.x / ROT_SPEED_MOUSE);
-//		mlx_mouse_hide(cub->mlx.mlx, cub->mlx.win);
-//		mlx_mouse_move(cub->mlx.mlx, cub->mlx.win, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_hide(cub->mlx.mlx, cub->mlx.win);
+		mlx_mouse_move(cub->mlx.mlx, cub->mlx.win, WIDTH / 2, HEIGHT / 2);
 	}
-//	else if (cub->player.map)
-//		mlx_mouse_show(cub->mlx.mlx, cub->mlx.win);
+	else if (cub->player.map)
+		mlx_mouse_show(cub->mlx.mlx, cub->mlx.win);
 	mouse->move.x = 0;
 
 	cub->player.view_dst_pos.x = (cub->player.dir.x * VIEW_DIST) + cub->player.pos.x;

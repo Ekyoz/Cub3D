@@ -44,8 +44,10 @@ int close_cub(t_cub *cub)
 	free_map(&cub->map);
 	free_img(&cub->map.textures, &cub->mlx);
 	free(cub->rays);
-	mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
+//	mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
+	mlx_loop_end(cub->mlx.mlx);
 	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
 	mlx_destroy_display(cub->mlx.mlx);
+	free(cub->mlx.mlx);
 	exit(0);
 }

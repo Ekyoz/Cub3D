@@ -122,7 +122,7 @@ ifeq ($(UNAME_S), Darwin)
 	LIBFLAGS			= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME_S), Linux)
 	INCLUDES			= -I$(MLX_DIR)
-    LIBFLAGS			= -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+    LIBFLAGS			= -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -lXfixes
 else
     $(error Unsupported OS: $(UNAME_S))
 endif
