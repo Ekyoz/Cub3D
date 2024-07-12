@@ -51,7 +51,7 @@ FILE_HOOKS_DIR			= hooks/
 FILE_HOOKS				= keyboard mouse
 
 FILE_PLAYER_DIR			= player/
-FILE_PLAYER				= player move rotate
+FILE_PLAYER				= player move move_2 rotate
 
 FILE_COLORS_DIR			= colors/
 FILE_COLORS				= lerp rgb
@@ -59,14 +59,13 @@ FILE_COLORS				= lerp rgb
 #------ UTILS ------#
 
 FILE_MATH_DIR			= maths/
-FILE_MATH				= vectors deg_rad direction others
+FILE_MATH				= vectors vector_2 deg_rad others
 
 FILE_UTILS_DIR			= utils/
 FILE_UTILS				= utils
 
 FILE_FORM_DIR			= form/
 FILE_FORM				= circle rectangle triangle triangle_points
-
 
 DIR_LIST				= 	$(FILE_PARSER_DIR) $(FILE_RAYCASTING_DIR) \
 							$(FILE_HOOKS_DIR) $(FILE_PLAYER_DIR) $(FILE_MATH_DIR) \
@@ -122,7 +121,7 @@ ifeq ($(UNAME_S), Darwin)
 	LIBFLAGS			= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME_S), Linux)
 	INCLUDES			= -I$(MLX_DIR)
-    LIBFLAGS			= -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -lXfixes
+    LIBFLAGS			= -L. $(MLX_ARCHIVE) -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
 else
     $(error Unsupported OS: $(UNAME_S))
 endif
@@ -135,22 +134,25 @@ VFALGS				= -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 #-------- NAMES --------#
 ARCHIVE_NAME		= $(OUT)/lib$(NAME).a
 RUN_NAME			= $(NAME)
+BONUS_NAME			= $(NAME)_bonus
 DEBUG_NAME 			= $(OUT)/debug.out
 TEST_NAME			= $(OUT)/test.out
 
 #-------- DIR --------#
 
-SRC_DIR				= srcs
+SRC_DIR				= srcs/bonus
+BONUS_DIR			= srcs/bonus
 TEST_DIR 			= test
 INCLUDE_DIR			= include
 OUT					= .objs
 
 #----RULES DIRS----#
 SRC_OUT_DIR			= $(OUT)/run
+BONUS_OUT_DIR		= $(OUT)/bonus
 DEBUG_OUT_DIR		= $(OUT)/debug
 TEST_OUT_DIR		= $(OUT)/test
 
-DIRS				= $(SRC_OUT_DIR) $(DEBUG_OUT_DIR) $(TEST_OUT_DIR)
+DIRS				= $(SRC_OUT_DIR) $(DEBUG_OUT_DIR) $(TEST_OUT_DIR) $(BONUS_OUT_DIR)
 HEADERS				= $(addprefix $(INCLUDE_DIR)/, $(addsuffix .h, $(HEADER_FILES)))
 
 #-------- SETTINGS --------#
@@ -178,6 +180,7 @@ BOLD				= \033[1m
 #-------- OBJECTS RUN --------#
 
 OBJ			 		= $(addprefix $(SRC_OUT_DIR)/, $(addsuffix .o, $(SRC_FILES)))
+OBJ_BONUS	 		= $(addprefix $(BONUS_OUT_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 OBJ_DEBUG			= $(addprefix $(DEBUG_OUT_DIR)/, $(addsuffix .o, $(SRC_FILES)))
 OBJ_TEST			= $(addprefix $(TEST_OUT_DIR)/, $(addsuffix .o, $(TEST_FILES)))
 
@@ -201,6 +204,9 @@ endef
 $(SRC_OUT_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile | $(OBJF)
 			$(call compile_object,$(CFLAGS))
 
+$(BONUS_OUT_DIR)/%.o: $(BONUS_DIR)/%.c $(HEADERS) Makefile | $(OBJF)
+			$(call compile_object,$(CFLAGS))
+
 $(DEBUG_OUT_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS) Makefile | $(OBJF)
 			$(call compile_object,$(CFLAGS_DEBUG))
 
@@ -209,29 +215,7 @@ $(TEST_OUT_DIR)/%.o: $(TEST_DIR)/%.c $(HEADERS) Makefile | $(OBJF)
 
 #-------- COMMANDS --------#
 
-$(NAME): archive $(OBJ) $(HEADERS)
-			@files=$$(find $(OUT) -name '*.updated'); \
-			if [ -n "$$files" ]; then \
-				$(CC) $(CFLAGS) $(OBJ) $(INCLUDE_RUN) -o $(RUN_NAME) $(LIBFLAGS); \
-				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès!$(DEF_COLOR) ($(YELLOW)$(BOLD)$(COUNTER)$(DEF_COLOR) $(WHITE)fichiers$(DEF_COLOR))"; \
-				rm -f $$files; \
-			else \
-				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) est déjà à jour!$(DEF_COLOR)"; \
-			fi
-
 all: $(NAME)
-
-lib:
-			@for dir in $(LIB_LIST); do make --no-print-directory -C $$dir; done
-
-#-------- RUN ---------#
-
-archive:	lib $(OBJ) $(HEADERS)
-			@$(AR) $(ARCHIVE_NAME) $(OBJ)
-			@for archive in $(LIB_LIST_ARCHIVE); do ar -x $$archive; done
-			@ar -qcs $(ARCHIVE_NAME) *.o
-			@rm -rf *.o
-			@rm -rf __.*
 
 run: $(NAME)
 			@if [ -z "$(ARG)" ]; then \
@@ -242,6 +226,49 @@ run: $(NAME)
 
 valgrind: $(NAME)
 			valgrind $(VFALGS) ./$(RUN_NAME) "./maps/testmap.cub"
+
+lib:
+			@for dir in $(LIB_LIST); do make --no-print-directory -C $$dir; done
+
+
+#-------- RUN ---------#
+
+archive:	lib $(OBJ) $(HEADERS)
+			@$(AR) $(ARCHIVE_NAME) $(OBJ)
+			@for archive in $(LIB_LIST_ARCHIVE); do ar -x $$archive; done
+			@ar -qcs $(ARCHIVE_NAME) *.o
+			@rm -rf *.o
+			@rm -rf __.*
+
+$(NAME): archive
+			@files=$$(find $(OUT) -name '*.updated'); \
+			if [ -n "$$files" ]; then \
+				$(CC) $(CFLAGS) $(OBJ) $(INCLUDE_RUN) -o $(RUN_NAME) $(LIBFLAGS); \
+				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès!$(DEF_COLOR) ($(YELLOW)$(BOLD)$(COUNTER)$(DEF_COLOR) $(WHITE)fichiers$(DEF_COLOR))"; \
+				rm -f $$files; \
+			else \
+				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) est déjà à jour!$(DEF_COLOR)"; \
+			fi
+
+
+#-------- BONUS ---------#
+
+ar_bonus:	lib $(OBJ_BONUS) $(HEADERS)
+			@$(AR) $(ARCHIVE_NAME) $(OBJ_BONUS)
+			@for archive in $(LIB_LIST_ARCHIVE); do ar -x $$archive; done
+			@ar -qcs $(ARCHIVE_NAME) *.o
+			@rm -rf *.o
+			@rm -rf __.*
+
+bonus: ar_bonus
+			@files=$$(find $(OUT) -name '*.updated'); \
+			if [ -n "$$files" ]; then \
+				$(CC) $(CFLAGS) $(OBJ_BONUS) $(INCLUDE_RUN) -o $(BONUS_NAME) $(LIBFLAGS); \
+				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès en version $(YELLOW)$(BOLD)BONUS!$(DEF_COLOR)$(DEF_COLOR) ($(YELLOW)$(BOLD)$(COUNTER)$(DEF_COLOR) $(WHITE)fichiers$(DEF_COLOR))"; \
+				rm -f $$files; \
+			else \
+				echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) est déjà à jour!$(DEF_COLOR)"; \
+			fi
 
 #------- DEBUG --------#
 
@@ -269,6 +296,9 @@ test: ar_test
 			@$(CC) $(CFLAGS_TEST) $(OBJ_TEST) $(INCLUDE_RUN) -o $(TEST_NAME) $(LIBFLAGS)
 			@echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès en version $(YELLOW)$(BOLD)TEST!$(DEF_COLOR)"
 
+
+
+
 #-------- CLEAN --------#
 re:			fclean all
 			@echo "$(GREEN)Nettoyage et recompilage de $(PROJECT_NAME)!$(DEF_COLOR)"
@@ -280,6 +310,7 @@ clean:
 			@$(RM) $(RUN_NAME)
 			@$(RM) $(DEBUG_NAME)
 			@$(RM) $(TEST_NAME)
+			@$(RM) $(BONUS_NAME)
 			@$(RM) *.o
 			@$(RM) __.*
 			@echo "$(ORANGE)Tous les fichier objets de $(CYAN)$(BOLD)$(PROJECT_NAME)$(ORANGE) ont été supprimé!$(DEF_COLOR)"

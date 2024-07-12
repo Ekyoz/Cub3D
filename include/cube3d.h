@@ -171,19 +171,11 @@ t_vector_d	create_vect_d_from_origin(t_vector_d origin, float radian,
 t_vector_d	create_d_vect(int x, int y);
 t_vector_f	create_f_vect(float x, float y);
 void		set_vector_d(t_vector_d *vector, int x, int y);
-void		set_vector_f(t_vector_f *vector, float x, float y);
-t_vector_d	vector_d_lerp(t_vector_d start, t_vector_d end, float timestamp);
 t_vector_f	vector_f_lerp(t_vector_f start, t_vector_f end, float timestamp);
-t_vector_d	rotate_vector_d(t_vector_d vector, double radian);
-t_vector_f	rotate_vector_f(t_vector_f vector, double radian);
 // DEG / RAD
-double		radian_to_degree(double radian);
 double		degree_to_radian(double degree);
 double		get_angle(t_vector_d start, t_vector_d end);
 double		get_angle_f(t_vector_f start, t_vector_f end);
-// Direction
-double		get_direction(t_vector_d start, t_vector_d end);
-double		get_direction_f(t_vector_f start, t_vector_f end);
 // Others
 float		ft_abs_f(float nb);
 void		print_grid(t_cub *data);
