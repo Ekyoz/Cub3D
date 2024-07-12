@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	draw_rect_filled_color(t_cub *data, t_vector_d top_left,
 		t_vector_d bottom_right, int color)

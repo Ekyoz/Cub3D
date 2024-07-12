@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	get_tex_x(t_cub *cub, t_ray *ray, t_sprite *texture)
 {

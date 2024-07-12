@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	toggle_door(t_cub *cub);
 static void	player_input_2(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse);

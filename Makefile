@@ -16,7 +16,7 @@ NAME				= "cub3d"
 
 #-------- FILES --------#
 
-HEADER_FILES			= cube3d structs define error_messages
+HEADER_FILES			= cub3d structs define error_messages
 SRC_FILES		    	= main init loop
 TEST_FILES  			=
 
@@ -140,7 +140,7 @@ TEST_NAME			= $(OUT)/test.out
 
 #-------- DIR --------#
 
-SRC_DIR				= srcs/bonus
+SRC_DIR				= srcs/mandatory
 BONUS_DIR			= srcs/bonus
 TEST_DIR 			= test
 INCLUDE_DIR			= include

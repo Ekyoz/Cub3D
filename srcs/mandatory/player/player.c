@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	player_input(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 {

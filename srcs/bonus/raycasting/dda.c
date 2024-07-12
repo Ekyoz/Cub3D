@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static t_vector_f	calculate_delta_dist(t_vector_f ray_dir);
 static void			initialize_steps_and_side_dist(t_cub *cub, t_ray *ray,

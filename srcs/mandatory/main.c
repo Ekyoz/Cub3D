@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	main(int argc, char *argv[])
 {
@@ -21,14 +21,12 @@ int	main(int argc, char *argv[])
 	parse_map(p_cub, argc, argv);
 	cub.map = init_map();
 	put_cub_in_map(&p_cub, &cub.map);
-	if (init_game(&cub) == 1)
-		exit(1);
-	if (init_input(&cub.mouse, &cub.keyboard) == 1)
-		exit(1);
+	init_game(&cub);
+	init_input(&cub.mouse, &cub.keyboard);
 	if (init_sprites(&cub) == 1)
-		exit(1);
+		close_cub(&cub, ERROR_SPRITE, 1);
 	if (init_player(&cub) == 1)
-		exit(1);
+		close_cub(&cub, ERROR_PLAYER, 1);
 	loop(&cub);
-	close_cub(&cub);
+	close_cub(&cub, NULL, 0);
 }

@@ -155,4 +155,4 @@ typedef struct s_pcub
 	int				linemap;
 }					t_pcub;
 
-#endif // CUBE3D_STRUCTS_H
+#endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	free_map(t_map *map)
 {
@@ -39,14 +39,22 @@ void	free_img(t_textures *textures, t_mlx *mlx)
 	mlx_destroy_image(mlx->mlx, textures->door.texture);
 }
 
-int	close_cub(t_cub *cub)
+int	close_cub(t_cub *cub, char *str, int err_code)
 {
 	free_map(&cub->map);
-	free_img(&cub->map.textures, &cub->mlx);
 	free(cub->rays);
-	mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
-	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
-//	mlx_destroy_display(cub->mlx.mlx);
-	free(cub->mlx.mlx);
-	exit(0);
+	if (cub->mlx.mlx)
+	{
+		free_img(&cub->map.textures, &cub->mlx);
+		if (cub->mlx.win)
+		{
+			mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
+			mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
+		}
+	//	mlx_destroy_display(cub->mlx.mlx);
+		free(cub->mlx.mlx);
+	}
+	if (str)
+		printf("\n\n\033[31m==%s==\033[0m\n\n", str);
+	exit(err_code);
 }

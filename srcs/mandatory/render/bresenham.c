@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	plot_line_high(t_cub *cub, t_vector_d p1, t_vector_d p2, int color);
 static void	plot_line_low(t_cub *cub, t_vector_d p1, t_vector_d p2, int color);

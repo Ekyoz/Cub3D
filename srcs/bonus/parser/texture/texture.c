@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 // une fonction qui check la texture actuelle et qui verifie l'ordre a chaque fois
 static void find_texture(char *str, int j, t_pcub *cub)

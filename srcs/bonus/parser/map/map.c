@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void complete_map(t_pcub *cub)
 {

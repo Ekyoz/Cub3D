@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_vector_d	create_vect_d_from_origin(t_vector_d origin, float radian,
 										float length)

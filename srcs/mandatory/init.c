@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	init_game(t_cub *cub)
 {
 	cub->mlx.mlx = mlx_init();
 	if (cub->mlx.mlx == NULL)
-		return (1);
+		close_cub(&cub, MLX_INIT, 1);
 	cub->mlx.win = mlx_new_window(cub->mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (cub->mlx.win == NULL)
-		return (1);
+		close_cub(&cub, MLX_WIN, 1);
 	cub->mlx.img = mlx_new_image(cub->mlx.mlx, WIDTH, HEIGHT);
 	if (cub->mlx.img == NULL)
-		return (1);
+		close_cub(&cub, MLX_IMG, 1);
 	cub->mlx.addr = mlx_get_data_addr(cub->mlx.img, &cub->mlx.bits_per_pixel,
 			&cub->mlx.line_length, &cub->mlx.endian);
 	if (cub->mlx.addr == NULL)
-		return (1);
+		close_cub(&cub, MLX_IMG, 1);
 	cub->rays_nb = WIDTH;
 	cub->rays = malloc(sizeof(t_ray) * cub->rays_nb);
 	if (cub->rays == NULL)
-		return (1);
+		close_cub(&cub, MLX_MALLOC_RAYS, 1);
 	return (0);
 }
 

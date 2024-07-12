@@ -40,3 +40,13 @@
 #define OPEN_MAP "Map is not closed"
 #define MAP_TOO_BIG "Map is too big"
 #define WRONG_CARACTER_MAP "Wrong caracter inside map"
+
+//MLX
+#define MLX_INIT "MLX not initialized correctly"
+#define MLX_WIN "Window error"
+#define MLX_IMG "Error when image created"
+#define MLX_MALLOC_RAYS "Error when allocated rays"
+
+//INIT
+#define ERROR_SPRITE "Error when sprite created"
+#define ERROR_PLAYER "Error when player created"

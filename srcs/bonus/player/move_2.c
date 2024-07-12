@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static float	coll_x(t_vector_f dir);
 static float	coll_y(t_vector_f dir);

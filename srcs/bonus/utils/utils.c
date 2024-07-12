@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	is_in_map(t_cub *cub, t_vector_d pos)
 {
@@ -50,10 +50,10 @@ void	print_grid(t_cub *data)
 	int			x;
 	int			y;
 
-	x = 0;
 	y = 0;
 	while (y < data->map.height)
 	{
+		x = 0;
 		while (x < data->map.width)
 		{
 			top_left = create_d_vect(x * TILE_SIZE, y * TILE_SIZE);

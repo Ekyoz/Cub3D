@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 int	key_press(int keycode, t_cub *cub)
 {
@@ -21,7 +21,7 @@ int	key_press(int keycode, t_cub *cub)
 		cub->keyboard.keyboard[keycode] = 1;
 	}
 	if (cub->keyboard.keyboard[KEY_ESC])
-		close_cub(cub);
+		close_cub(cub, NULL, 0);
 	return (0);
 }
 

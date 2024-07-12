@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	print_text(t_cub *cub, t_vector_d center, int size_map);
 static void	render_player_arrow(t_cub *cub, t_vector_d center);

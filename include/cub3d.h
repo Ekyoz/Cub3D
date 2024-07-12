@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h:+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre         #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre        ###   ########.fr       */
+/*   Created: 2024/07/08 14:19:50 by alexandre         #+#    #+#             */
+/*   Updated: 2024/07/11 14:59:38 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-# define CUBE3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "define.h"
 # include "mlx.h"
@@ -90,7 +90,7 @@ void		free_array(char ***ptr);
 void		free_cub(t_pcub **cub);
 void		free_color(t_color **color);
 void		free_map(t_map *map);
-int			close_cub(t_cub *cub);
+int			close_cub(t_cub *cub, char *str, int err_code);
 
 /*
  *

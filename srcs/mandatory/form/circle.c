@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void	draw_circle_color_radius(t_cub *data, t_vector_d center, int color,
 		int radius)

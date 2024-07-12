@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	ray_render_loop(t_cub *cub, int slice_width, int i);
 static void	render_slice(t_cub *cub, t_ray *ray, t_vector_d points[2]);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_vector_f	vector_d_to_f(t_vector_d vector_d)
 {

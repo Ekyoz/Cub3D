@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 void get_texture_face(t_pcub *cub, char *str, int j, char **face)
 {

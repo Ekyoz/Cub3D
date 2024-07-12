@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "cub3d.h"
 
 static void	fill_top_triangle(t_cub *data, t_vector_d points[3], int color);
 static void	fill_bottom_triangle(t_cub *data, t_vector_d points[3], int color);
