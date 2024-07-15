@@ -6,7 +6,7 @@
 #    By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 12:10:27 by atresall          #+#    #+#              #
-#    Updated: 2024/07/04 15:41:28 by bastpoy          ###   ########.fr        #
+#    Updated: 2024/07/09 16:19:21 by bastpoy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ TEST_FILES  			=
 #----- GARBAGE COLECTOR -----#
 
 FILE_GARBAGE_COL_DIR 	= garbage_collector/
-FILE_GARBAGE_COL 		= free_functions close
+FILE_GARBAGE_COL 		= free_functions free_functions1 close
 
 #----- PARSING ------#
 
