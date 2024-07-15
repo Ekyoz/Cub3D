@@ -6,7 +6,7 @@
 /*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:35:04 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/05 15:44:02 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/15 20:04:49 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,14 @@ void	print_free_exit(char *str, t_pcub *cub)
 		printf("\n\n\033[31m==%s==\033[0m\n\n", str);
 	free_cub(&cub);
 	exit(1);
+}
+
+void	print_free_str_exit(char *errormessage, char *str, t_pcub *cub)
+{
+	if (errormessage)
+		printf("\n\n\033[31m==%s==\033[0m\n\n", errormessage);
+	if (str)
+		free(str);
+	free_cub(&cub);
+	exit(0);
 }
