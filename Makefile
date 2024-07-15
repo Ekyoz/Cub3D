@@ -23,7 +23,7 @@ TEST_FILES  			=
 #----- GARBAGE COLECTOR -----#
 
 FILE_GARBAGE_COL_DIR 	= garbage_collector/
-FILE_GARBAGE_COL 		= free_functions free_functions1 close
+FILE_GARBAGE_COL 		= free_functions close
 
 #----- PARSING ------#
 

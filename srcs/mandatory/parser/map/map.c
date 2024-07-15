@@ -3,26 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:02:07 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/15 19:24:28 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/09 14:42:02 by bastpoy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "cub3d.h"
 
-void	complete_map(t_pcub *cub)
+void complete_map(t_pcub *cub)
 {
-	char	*linecp;
-	int		i;
-	int		j;
+	char *linecp;
+	int i;
+	int j;
 
 	i = 0;
-	while (cub->map[i])
+	while(cub->map[i])
 	{
 		j = ft_strlen1(cub->map[i], cub);
-		while (j < cub->x_max_size)
+		while(j < cub->x_max_size)
 		{
 			linecp = cub->map[i];
 			cub->map[i] = ft_strjoin(linecp, " ");
@@ -33,44 +34,44 @@ void	complete_map(t_pcub *cub)
 	}
 }
 
-void	check_player_number(t_pcub *cub)
+void check_player_number(t_pcub *cub)
 {
-	int	i;
-	int	j;
-	int	player;
+	int i;
+	int j;
+	int player;
 
 	i = 0;
 	player = 0;
-	while (cub->map[i])
+	while(cub->map[i])
 	{
 		j = 0;
-		while (cub->map[i][j])
+		while(cub->map[i][j])
 		{
-			if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
-				|| cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
+			if(cub->map[i][j] == 'N' || cub->map[i][j] == 'S' ||
+			   cub->map[i][j] == 'E' || cub->map[i][j] == 'W')
 				player++;
 			j++;
 		}
 		i++;
 	}
-	if (player < 1)
+	if(player < 1)
 		print_free_exit(NO_PLAYER, cub);
-	if (player > 1)
+	if(player > 1)
 		print_free_exit(TOO_MANY_PLAYER, cub);
 }
 
-void	check_carac_map(t_pcub *cub)
+void check_carac_map(t_pcub *cub)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
-	while (cub->map[i])
+	while(cub->map[i])
 	{
 		j = 0;
-		if (!ft_strncmp(cub->map[i], "\n", 2))
+		if(!ft_strncmp(cub->map[i], "\n", 2))
 			print_free_exit(EMPTY_LINE_END, cub);
-		while (cub->map[i][j])
+		while(cub->map[i][j])
 		{
 			if (cub->map[i][j] != '0' && cub->map[i][j] != '1'
 				&& cub->map[i][j] != 'N' && cub->map[i][j] != ' '
@@ -84,27 +85,29 @@ void	check_carac_map(t_pcub *cub)
 	}
 }
 
-void	fill_map(t_pcub *cub)
+void fill_map(t_pcub *cub)
 {
-	char	*line;
-	int		i;
+	char *line;
+	int i;
 
 	i = 0;
 	cub->map = (char **)malloc(sizeof(char *) * (cub->linemap + 1));
-	if (!cub->map)
+	if(!cub->map)
 		print_free_exit(ERROR_MALLOC_INIT, cub);
-	while (i < cub->linetexture)
+	while(i < cub->linetexture)
 	{
 		line = get_next_line(cub->filefd);
 		free(line);
 		i++;
 	}
 	i = 0;
-	while (i < cub->linemap)
+	while(i < cub->linemap)
 	{
 		line = get_next_line(cub->filefd);
-		if (line)
+		if(line)
+		{
 			cub->map[i] = ft_strdup(line);
+		}
 		free(line);
 		line = NULL;
 		i++;
@@ -112,17 +115,17 @@ void	fill_map(t_pcub *cub)
 	cub->map[i] = NULL;
 }
 
-void	get_height_map(t_pcub *cub)
+void get_height_map(t_pcub *cub)
 {
-	char	*line;
+	char *line;
 
 	line = get_next_line(cub->filefd);
-	while (line)
+	while(line)
 	{
 		cub->linemap++;
 		free(line);
 		line = get_next_line(cub->filefd);
 	}
-	if (cub->linemap == 0)
+	if(cub->linemap == 0)
 		print_free_exit(NO_MAP, cub);
 }

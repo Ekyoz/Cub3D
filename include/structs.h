@@ -147,6 +147,7 @@ typedef struct s_pcub
 	char			*wetexture;
 	char			*eatexture;
 	char			**map;
+	int 			counttexture;
 	int				x_max_size;
 	int				y_max_size;
 	int				filefd;

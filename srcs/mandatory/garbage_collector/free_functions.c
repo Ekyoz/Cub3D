@@ -73,3 +73,13 @@ void	print_free_exit(char *str, t_pcub *cub)
 	free_cub(&cub);
 	exit(1);
 }
+
+void	print_free_str_exit(char *errormessage, char *str, t_pcub *cub)
+{
+	if (errormessage)
+		printf("\n\n\033[31m==%s==\033[0m\n\n", errormessage);
+	if (str)
+		free(str);
+	free_cub(&cub);
+	exit(0);
+}
