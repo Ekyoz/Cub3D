@@ -107,6 +107,10 @@ int	init_player(t_cub *cub)
 
 int	init_sprites(t_cub *cub)
 {
+	cub->map.textures.walls[0].texture = NULL;
+	cub->map.textures.walls[1].texture = NULL;
+	cub->map.textures.walls[2].texture = NULL;
+	cub->map.textures.walls[3].texture = NULL;
 	cub->map.textures.walls[0] = load_texture(cub, cub->map.textures.so);
 	cub->map.textures.walls[1] = load_texture(cub, cub->map.textures.we);
 	cub->map.textures.walls[2] = load_texture(cub, cub->map.textures.no);

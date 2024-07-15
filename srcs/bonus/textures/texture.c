@@ -59,6 +59,11 @@ t_sprite	load_texture(t_cub *cub, char *path)
 	texture = (t_sprite *)malloc(sizeof(t_sprite));
 	if (!texture)
 		close_cub(cub, ERROR_MALLOC_INIT, 1);
+	if (open(path, O_RDONLY) == -1)
+	{
+		free(texture);
+		close_cub(cub, TEXTURE_PROBLEM, 1);
+	}
 	texture->texture = mlx_xpm_file_to_image(cub->mlx.mlx, path,
 			&texture->width, &texture->height);
 	if (!texture->texture)
