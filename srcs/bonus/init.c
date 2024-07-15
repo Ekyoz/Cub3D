@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
+/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:37:53 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/01 15:37:53 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/15 20:11:08 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	init_sprites(t_cub *cub)
 	cub->map.textures.walls[1].texture = NULL;
 	cub->map.textures.walls[2].texture = NULL;
 	cub->map.textures.walls[3].texture = NULL;
+	cub->map.textures.door.texture = NULL;
 	cub->map.textures.walls[0] = load_texture(cub, cub->map.textures.so);
 	cub->map.textures.walls[1] = load_texture(cub, cub->map.textures.we);
 	cub->map.textures.walls[2] = load_texture(cub, cub->map.textures.no);
