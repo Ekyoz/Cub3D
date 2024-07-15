@@ -1,19 +1,11 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube3d.h:+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atresall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 15:24:11 by alexandre         #+#    #+#             */
-/*   Updated: 2024/06/25 15:24:11 by alexandre        ###   ########.fr       */
+/*   Created: 2024/07/11 17:08:52 by alexandre         #+#    #+#             */
+/*   Updated: 2024/07/11 17:08:52 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef CUBE3D_H
-#define CUBE3D_H
-
-#include "structs.h"
-#include "mlx.h"
-
-#endif
