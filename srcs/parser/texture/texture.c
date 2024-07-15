@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/10 18:32:04 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:07:51 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	put_texture(t_pcub *cub)
 			break ;
 		free(str);
 		str = get_next_line(cub->filefd);
+
 		i++;
 	}
     printf("size %d %s\n", ft_strlen1(str, cub), str);
