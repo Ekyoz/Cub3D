@@ -6,7 +6,7 @@
 /*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:06:58 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/09 16:06:58 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/15 18:51:26 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,16 @@ void	free_map(t_map *map)
 
 void	free_img(t_textures *textures, t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img);
-	mlx_destroy_image(mlx->mlx, textures->walls[0].texture);
-	mlx_destroy_image(mlx->mlx, textures->walls[1].texture);
-	mlx_destroy_image(mlx->mlx, textures->walls[2].texture);
-	mlx_destroy_image(mlx->mlx, textures->walls[3].texture);
-	mlx_destroy_image(mlx->mlx, textures->door.texture);
+	if (mlx->img)
+		mlx_destroy_image(mlx->mlx, mlx->img);
+	if (textures->walls[0].texture)
+		mlx_destroy_image(mlx->mlx, textures->walls[0].texture);
+	if (textures->walls[1].texture)
+		mlx_destroy_image(mlx->mlx, textures->walls[1].texture);
+	if (textures->walls[2].texture)
+		mlx_destroy_image(mlx->mlx, textures->walls[2].texture);
+	if (textures->walls[3].texture)
+		mlx_destroy_image(mlx->mlx, textures->walls[3].texture);
 }
 
 int	close_cub(t_cub *cub, char *str, int err_code)
