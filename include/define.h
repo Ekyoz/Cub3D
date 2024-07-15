@@ -58,33 +58,33 @@
 # define PINK 0x00DD88BB
 
 // KEYS LINUX
-//# define LMB 1
-//# define RMB 3
-//# define KEY_E 101
-//# define KEY_ESC 65307 % 200
-//# define KEY_UP 65362 % 200
-//# define KEY_DOWN 65364 % 200
-//# define KEY_LEFT 65361 % 200
-//# define KEY_RIGHT 65363 % 200
-//# define KEY_W 119 % 200
-//# define KEY_S 115 % 200
-//# define KEY_A 97 % 200
-//# define KEY_D 100 % 200
-//# define KEY_TAB 65289 % 200
+# define LMB 1
+# define RMB 3
+# define KEY_E 101
+# define KEY_ESC 65307 % 200
+# define KEY_UP 65362 % 200
+# define KEY_DOWN 65364 % 200
+# define KEY_LEFT 65361 % 200
+# define KEY_RIGHT 65363 % 200
+# define KEY_W 119 % 200
+# define KEY_S 115 % 200
+# define KEY_A 97 % 200
+# define KEY_D 100 % 200
+# define KEY_TAB 65289 % 200
 
 // KEY MAC
-# define LMB 1
-# define RMB 2
-# define KEY_TAB 48
-# define KEY_ESC 53
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_W 13
-# define KEY_E 14
-# define KEY_S 1
-# define KEY_A 0
-# define KEY_D 2
+//# define LMB 1
+//# define RMB 2
+//# define KEY_TAB 48
+//# define KEY_ESC 53
+//# define KEY_UP 126
+//# define KEY_DOWN 125
+//# define KEY_LEFT 123
+//# define KEY_RIGHT 124
+//# define KEY_W 13
+//# define KEY_E 14
+//# define KEY_S 1
+//# define KEY_A 0
+//# define KEY_D 2
 
 #endif

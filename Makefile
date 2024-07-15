@@ -113,8 +113,8 @@ LIB_LIST			= $(LIBFT_DIR) $(GNL_DIR) $(MLX_DIR)
 LIB_LIST_ARCHIVE	= $(ARCHIVE_NAME) $(LIBFT_ARCHIVE) $(GNL_ARCHIVE) $(MLX_ARCHIVE)
 
 #-------- FLAGS --------#
-CFLAGS 				= -Wall -Wextra -g3
-CFLAGS_DEBUG		= -Wall -Wextra -g3
+CFLAGS 				= -Wall -Wextra -Werror -g3
+CFLAGS_DEBUG		= -Wall -Wextra -Werror -g3
 CFLAGS_TEST			= -g3
 ifeq ($(UNAME_S), Darwin)
 	INCLUDES			= -I$(MLX_DIR)

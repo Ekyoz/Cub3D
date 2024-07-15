@@ -6,13 +6,14 @@
 /*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:45:56 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/01 16:02:04 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/15 18:33:49 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static int	update(t_cub *cub);
+static int	exit_loop(t_cub *cub);
 
 void	loop(t_cub *cub)
 {
@@ -21,9 +22,15 @@ void	loop(t_cub *cub)
 	mlx_hook(cub->mlx.win, 4, 1L << 2, mouse_hook, &cub->mouse);
 	mlx_hook(cub->mlx.win, 5, 1L << 3, mouse_release, &cub->mouse);
 	mlx_hook(cub->mlx.win, 6, 1L << 6, update_mouse_pos, &cub->mouse);
-	mlx_hook(cub->mlx.win, 17, 1L << 0, close_cub, cub);
+	mlx_hook(cub->mlx.win, 17, 1L << 0, exit_loop, cub);
 	mlx_loop_hook(cub->mlx.mlx, update, cub);
 	mlx_loop(cub->mlx.mlx);
+}
+
+static int	exit_loop(t_cub *cub)
+{
+	close_cub(cub, NULL, 0);
+	return (0);
 }
 
 static int	update(t_cub *cub)
@@ -31,7 +38,7 @@ static int	update(t_cub *cub)
 	player_input(cub, &cub->keyboard, &cub->mouse);
 	if (cub->player.map)
 	{
-		mlx_mouse_show(cub->mlx.win, cub->mlx.win);
+		mlx_mouse_show(cub->mlx.mlx, cub->mlx.win);
 		clear_window(cub);
 		set_grid_cell(cub, cub->mouse.pos.x, cub->mouse.pos.y);
 		print_grid(cub);

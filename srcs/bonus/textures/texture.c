@@ -62,10 +62,7 @@ t_sprite	load_texture(t_cub *cub, char *path)
 	texture->texture = mlx_xpm_file_to_image(cub->mlx.mlx, path,
 			&texture->width, &texture->height);
 	if (!texture->texture)
-	{
-		printf("error\n");
-		exit(1);
-	}
+		close_cub(cub, TEXTURE_PROBLEM, 1);
 	texture->addr = mlx_get_data_addr(texture->texture,
 			&texture->bits_per_pixel, &texture->line_length, &texture->endian);
 	result = *texture;

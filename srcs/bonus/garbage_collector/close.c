@@ -51,7 +51,7 @@ int	close_cub(t_cub *cub, char *str, int err_code)
 			mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
 			mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
 		}
-	//	mlx_destroy_display(cub->mlx.mlx);
+		mlx_destroy_display(cub->mlx.mlx);
 		free(cub->mlx.mlx);
 	}
 	if (str)

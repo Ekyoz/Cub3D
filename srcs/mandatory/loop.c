@@ -6,13 +6,14 @@
 /*   By: alexandre <atresall@student.42lyon.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:45:56 by alexandre         #+#    #+#             */
-/*   Updated: 2024/07/01 16:02:04 by alexandre        ###   ########.fr       */
+/*   Updated: 2024/07/15 18:33:39 by atresall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static int	update(t_cub *cub);
+static int	exit_loop(t_cub *cub);
 
 void	loop(t_cub *cub)
 {
@@ -20,9 +21,15 @@ void	loop(t_cub *cub)
 	mlx_hook(cub->mlx.win, 3, 1L << 1, key_release, &cub->keyboard);
 	mlx_hook(cub->mlx.win, 4, 1L << 2, mouse_hook, &cub->mouse);
 	mlx_hook(cub->mlx.win, 5, 1L << 3, mouse_release, &cub->mouse);
-	mlx_hook(cub->mlx.win, 17, 1L << 0, close_cub, cub);
+	mlx_hook(cub->mlx.win, 17, 1L << 0, exit_loop, cub);
 	mlx_loop_hook(cub->mlx.mlx, update, cub);
 	mlx_loop(cub->mlx.mlx);
+}
+
+static int	exit_loop(t_cub *cub)
+{
+	close_cub(cub, NULL, 0);
+	return (0);
 }
 
 static int	update(t_cub *cub)

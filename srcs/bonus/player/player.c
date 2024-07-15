@@ -56,8 +56,7 @@ static void	player_input_2(t_cub *cub, t_keyboard *keyboard, t_mouse *mouse)
 		if (mouse->move.x < 100)
 			rotate_left(&cub->player, (float)mouse->move.x / ROT_SPEED_MOUSE);
 		mlx_mouse_hide(cub->mlx.mlx, cub->mlx.win);
-		mlx_mouse_move(cub->mlx.win, WIDTH / 2, HEIGHT / 2);
-		// mlx_mouse_move(cub->mlx.mlx, cub->mlx.win, WIDTH / 2, HEIGHT / 2);
+		mlx_mouse_move(cub->mlx.mlx, cub->mlx.win, WIDTH / 2, HEIGHT / 2);
 	}
 	else if (cub->player.map)
 		mlx_mouse_show(cub->mlx.mlx, cub->mlx.win);
