@@ -31,7 +31,7 @@ FILE_PARSER_DIR 	    = parser/
 FILE_PARSER 		    = parser utils struct
 
 FILE_MAP_DIR			= parser/map/
-FILE_MAP				= map map_utils check_line map_wall map_length
+FILE_MAP				= map check_line map_wall map_length
 
 FILE_TEXTURE_PARS_DIR	= parser/texture/
 FILE_TEXTURE_PARS		= texture texture_utils face_color_texture color_utils
@@ -297,7 +297,8 @@ test: ar_test
 			@echo "$(CYAN)$(BOLD)$(PROJECT_NAME)$(GREEN) a été compilé avec succès en version $(YELLOW)$(BOLD)TEST!$(DEF_COLOR)"
 
 
-
+norm:
+			norminette include/GNL include/LibFT include/cub3d.h include/define.h include/error_messages.h include/structs.h srcs
 
 #-------- CLEAN --------#
 re:			fclean all

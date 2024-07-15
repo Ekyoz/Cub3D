@@ -22,6 +22,8 @@
 #define NO_NAME_TEXTURE "No name texture"
 #define TEXTURE_PROBLEM "Texture problem"
 #define ERROR_TEXTURE_EXT "Error with texture file"
+#define TEXTURE_NUMBER "Wrong number of textures"
+#define MULTI_TEXTURE "Multiple texture"
 #define WRONG_ORDER "Wrong order"
 #define WRONG_EXTENSION "Wrong extension of texture"
 

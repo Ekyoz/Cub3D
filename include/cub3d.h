@@ -50,8 +50,8 @@ int			check_cmp(char *line);
 void		get_texture_face(t_pcub *cub, char *str, int j, char **face);
 
 // COLORS
-void		get_color_ceiling(t_pcub *cub, char *str, t_color **color);
-void		get_color_floor(t_pcub *cub, char *str, t_color **color);
+void		get_color_ceiling(t_pcub *cub, char *str);
+void		get_color_floor(t_pcub *cub, char *str);
 void		is_valid_color(char *str, t_pcub *cub);
 int			check_space_inside(t_pcub *cub, char *str, char **split_color,
 				char *line);
@@ -75,6 +75,13 @@ bool		space_before(char *str, int index);
 bool		space_inside(char *start, char *end);
 int			ft_strlen1(char *str, t_pcub *cub);
 
+// FREE
+void		print_free_exit(char *errormessage, t_pcub *cub);
+void		print_free_str_exit(char *errormessage, char *str, t_pcub *cub);
+void		free_array(char ***ptr);
+void		free_cub(t_pcub **cub);
+void		free_color(t_color **color);
+
 /***
  *     ██████╗  █████╗ ██████╗ ██████╗  █████╗  ██████╗ ███████╗
  *    ██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝ ██╔════╝
@@ -89,7 +96,6 @@ void		print_free_exit(char *str, t_pcub *cub);
 void		free_array(char ***ptr);
 void		free_cub(t_pcub **cub);
 void		free_color(t_color **color);
-void		free_map(t_map *map);
 int			close_cub(t_cub *cub, char *str, int err_code);
 
 /*

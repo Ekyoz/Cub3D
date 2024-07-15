@@ -61,16 +61,16 @@
 # define LMB 1
 # define RMB 3
 # define KEY_E 101
-# define KEY_ESC 65307 % 200
-# define KEY_UP 65362 % 200
-# define KEY_DOWN 65364 % 200
-# define KEY_LEFT 65361 % 200
-# define KEY_RIGHT 65363 % 200
-# define KEY_W 119 % 200
-# define KEY_S 115 % 200
-# define KEY_A 97 % 200
-# define KEY_D 100 % 200
-# define KEY_TAB 65289 % 200
+# define KEY_ESC 107
+# define KEY_UP 162
+# define KEY_DOWN 164
+# define KEY_LEFT 161
+# define KEY_RIGHT 163
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_TAB 89
 
 // KEY MAC
 //# define LMB 1

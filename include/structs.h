@@ -150,7 +150,7 @@ typedef struct s_pcub
 	int				x_max_size;
 	int				y_max_size;
 	int				filefd;
-	int				countorder;
+	int				counttexture;
 	int				linetexture;
 	int				linemap;
 }					t_pcub;
