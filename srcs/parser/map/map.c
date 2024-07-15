@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bastpoy <bastpoy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 13:02:07 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/09 16:24:07 by bastpoy          ###   ########.fr       */
+/*   Updated: 2024/07/15 19:24:28 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	check_carac_map(t_pcub *cub)
 				&& cub->map[i][j] != 'N' && cub->map[i][j] != ' '
 				&& cub->map[i][j] != '\n' && cub->map[i][j] != 'S'
 				&& cub->map[i][j] != 'E' && cub->map[i][j] != 'W'
-				&& cub->map[i][j] != 'D')
+				&& cub->map[i][j] != '2' && cub->map[i][j] != '4')
 				print_free_exit(WRONG_CARACTER_MAP, cub);
 			j++;
 		}
@@ -123,7 +123,6 @@ void	get_height_map(t_pcub *cub)
 		free(line);
 		line = get_next_line(cub->filefd);
 	}
-	printf("le nombre de ligne de map est %d\n", cub->linemap);
 	if (cub->linemap == 0)
 		print_free_exit(NO_MAP, cub);
 }

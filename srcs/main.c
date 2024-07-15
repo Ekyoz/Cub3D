@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:57:32 by bastpoy           #+#    #+#             */
-/*   Updated: 2024/07/10 18:45:28 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:22:23 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	main(int argc, char **argv)
 	t_pcub	*cub;
 	t_map	*map;
 
-	printf("le raycasting dalex est nul\n");
 	cub = init_cub();
 	parse_map(cub, argc, argv);
 	map = init_map(cub);

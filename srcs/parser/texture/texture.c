@@ -6,7 +6,7 @@
 /*   By: bpoyet <bpoyet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:57:24 by bpoyet            #+#    #+#             */
-/*   Updated: 2024/07/15 19:07:51 by bpoyet           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:21:50 by bpoyet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void	put_texture(t_pcub *cub)
 
 	i = 0;
 	str = get_next_line(cub->filefd);
-    printf("size %d %s\n", ft_strlen1(str, cub), str);
 	while (i < cub->linetexture)
 	{
 		j = 0;
@@ -66,10 +65,8 @@ static void	put_texture(t_pcub *cub)
 			break ;
 		free(str);
 		str = get_next_line(cub->filefd);
-
 		i++;
 	}
-    printf("size %d %s\n", ft_strlen1(str, cub), str);
 	free(str);
 }
 
@@ -87,7 +84,6 @@ static void	countline_texture(t_pcub *cub)
 		str = get_next_line(cub->filefd);
 	}
 	free(str);
-	printf("le nombre de ligne de texture est %d\n", cub->linetexture);
 	if (cub->linetexture == 0)
 		print_free_exit(EMPTY_FILE, cub);
 }
